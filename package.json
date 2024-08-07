@@ -2,6 +2,7 @@
   "name": "cruciate_ligament",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://yudododo.github.io/cruciate_ligament",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -12,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "firebase": "^10.12.4",
+    "gh-pages": "^6.1.1",
     "js-cookie": "^3.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -21,6 +23,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

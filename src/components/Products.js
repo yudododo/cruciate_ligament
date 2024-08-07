@@ -28,6 +28,7 @@ export const Products = ({ type }) => {
                 component='img'
                 height='auto'
                 image={product.img}
+
                 alt={product.title}
               />
               <CardContent>
