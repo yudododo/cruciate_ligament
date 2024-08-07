@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/cruciate_ligament/static/css/main.a48e9355.css",
+    "main.js": "/cruciate_ligament/static/js/main.01199036.js",
+    "static/js/453.b4932a4c.chunk.js": "/cruciate_ligament/static/js/453.b4932a4c.chunk.js",
+    "index.html": "/cruciate_ligament/index.html",
+    "main.a48e9355.css.map": "/cruciate_ligament/static/css/main.a48e9355.css.map",
+    "main.01199036.js.map": "/cruciate_ligament/static/js/main.01199036.js.map",
+    "453.b4932a4c.chunk.js.map": "/cruciate_ligament/static/js/453.b4932a4c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a48e9355.css",
+    "static/js/main.01199036.js"
+  ]
+}
