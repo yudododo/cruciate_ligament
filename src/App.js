@@ -3,7 +3,7 @@ import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Container, Box } from '@mui/material';
-// import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { Shop } from './pages/Shop';
@@ -19,7 +19,6 @@ import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { CartContext, cartReducer, cartInit } from './store';
 // import axios from 'axios';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'; 
 
 
 import './index.css'; 
@@ -45,7 +44,6 @@ function App() {
   const reducer = useReducer (cartReducer, cartInit);
 
  return(
-  <Router>
   <ThemeProvider theme={theme}>
   <CartContext.Provider value={reducer}>
   <Container disableGutters maxWidth="xl" >
@@ -77,7 +75,6 @@ function App() {
   </Container>
   </CartContext.Provider>
   </ThemeProvider>
-  </Router>
  )
 }
 

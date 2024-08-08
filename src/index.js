@@ -11,7 +11,7 @@ axios.defaults.baseURL = process.env.REACT_APP_API_URL
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode> 這個除錯模式會造成品項加兩次
-    <HashRouter>
+    <HashRouter >
       <App />
     </HashRouter>
   // </React.StrictMode>
