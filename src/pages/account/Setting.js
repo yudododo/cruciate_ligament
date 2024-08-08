@@ -6,7 +6,7 @@ export const Setting = () => {
   const [email, setEmail] = useState('ae24856@gmail.com');
   const [password, setPassword] = useState('123456');
   return (
-    <Box p={5} sx={{ width:'550px'}} >
+    <Box py={6} px={12} sx={{ width:'100%'}} >
       <FormControl fullWidth>
         <Typography variant="h6" sx={{color: '#5B4F47', fontWeight: '700', mb: 2.5}} >Setting 設定</Typography>
         <Typography variant="subtitle2" sx={{color: '#5B4F47', fontWeight: '700', mb:2.5}} >Email 電子信箱</Typography>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Grid, Typography, Box } from '@mui/material';
+import cruciate_ligament_01 from '../images/cruciate_ligament_01.jpg';
 
 export const Home = () => {
   return (
@@ -7,7 +8,7 @@ export const Home = () => {
       <Grid container>
         <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <img 
-            src="/cruciate_ligament_01.jpg" alt="bg"
+            src={cruciate_ligament_01} alt="bg"
             style={{ width: '100%', maxWidth: 400, height: 'auto', borderRadius: '120px' }}
           />
         </Grid>

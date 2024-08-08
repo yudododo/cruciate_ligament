@@ -7,6 +7,7 @@ import axios from 'axios';
 import {Avatar, Button,TextField, Grid, Box, Typography, Container, Link } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 // import emailLogin from '../firebase/auth/emailLogin';
+import line_logo from '../images/line.png';
 
 // import { useSelector } from 'react-redux';
 // import useSignin from '@/hooks/api/useSignin';
@@ -242,7 +243,7 @@ export const Login = () => {
                   },
                 }}
               >
-                <img  src="/line.png" alt="line_logo"
+                <img src={line_logo} alt="line_logo"
                   style={{ width: 25, height: 25, marginRight: 10 }}
                 />
                 Log in with Line

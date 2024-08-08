@@ -10,7 +10,7 @@ export const Profile = () => {
   const [storeName, setStoreName] = useState('宏宇門市');
   const [convenstore,setConvenstore] = useState('711');
   return (
-    <Box p={5} sx={{ width:'550px'}} >
+    <Box py={6} px={12} sx={{ width:'100%'}} >
       <FormControl fullWidth>
         <Typography variant="h6" sx={{color: '#5B4F47', fontWeight: '700', mb: 1}} >Profile 個人資料</Typography>
         <FormGroup>

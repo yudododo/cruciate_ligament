@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import axios from 'axios';
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL
@@ -11,9 +11,9 @@ axios.defaults.baseURL = process.env.REACT_APP_API_URL
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode> 這個除錯模式會造成品項加兩次
-    <BrowserRouter>
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   // </React.StrictMode>
 );
 

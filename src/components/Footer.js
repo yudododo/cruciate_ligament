@@ -1,6 +1,7 @@
 import React from 'react';
 import {Typography, Link, Container, Box, Grid} from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import logo_w from '../images/logo_w.png';
 
 export const Footer = () => {
   return (
@@ -8,7 +9,7 @@ export const Footer = () => {
       <Grid container spacing={2}>
         <Grid item xs={4.5} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <img 
-          src="/logo_w.png"
+          src={logo_w}
           alt="logo"
           width={100}
           height={100}

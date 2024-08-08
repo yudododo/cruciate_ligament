@@ -3,10 +3,10 @@ import { useState } from 'react';
 
 import { MyMenu } from '../components/MyMenu';
 import { Cart } from '../components/Cart';
-
 // import { Link } from 'react-router-dom';
 import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem, Link } from '@mui/material';
 import MenuIcon from '@mui/icons-material/MenuRounded';
+import logo_pic_only from '../images/logo_pic_only.png';
 
 
 const settings = ['Orders 訂購紀錄', 'Profile 帳戶資料', 'Setting 設定', 'Logout 登出'];
@@ -51,7 +51,7 @@ export const NavBar = () => {
       <Container maxWidth="xl" sx={{ flexGrow: 1 }}>
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <img src="/logo_pic_only.png" alt="logo" width={35} height={35} />
+            <img src={logo_pic_only} alt="logo" width={35} height={35} />
           </Box>
           <Typography
             variant="h6"
@@ -110,7 +110,7 @@ export const NavBar = () => {
           </Box>
 
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <img src="/logo_pic_only.png" alt="logo" width={35} height={35} />
+            <img src={logo_pic_only} alt="logo" width={35} height={35} />
           </Box>
           <Typography
             variant="h5"

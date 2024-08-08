@@ -1,49 +1,55 @@
-import React from 'react'
+import React from 'react';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box } from '@mui/material';
 
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material';
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 export const Orders = () => {
+  const createData = (orderId,items, shipping, payments, total, status) => {
+    return { orderId, items, shipping, payments, total, status };
+  }
+  const rows = [
+    createData('#123', '花花長掛繩', 'Pick up from store', 'Online by card', '490', 'Processing'),
+    
+    // Add more rows if needed
+  ];
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <Box py={6} px={12} sx={{ width:'100%'}}>
+    <Typography align="left" variant="h6" sx={{color: '#5B4F47', fontWeight: '700', mb: 1}}>
+      Order History 訂購紀錄
+    </Typography>
+    <TableContainer component={Paper} sx={{ maxWidth: 650, maxHeight: 450 }}>
+      <Table stickyHeader  aria-label="simple table">
         <TableHead>
+          {/* <TableRow>
+            <TableCell colSpan={6}>Order History 訂購紀錄 </TableCell>
+          </TableRow> */}
           <TableRow>
+            <TableCell>OrderId</TableCell>
             <TableCell>Items</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Shipping</TableCell>
+            <TableCell>Payments</TableCell>
+            <TableCell>Total</TableCell>
+            <TableCell>Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+            <TableRow key={row.orderId} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              <TableCell component="th" scope="row">{row.orderId}</TableCell>
+              <TableCell>{row.items}</TableCell>
+              <TableCell>{row.shipping}</TableCell>
+              <TableCell>{row.payments}</TableCell>
+              <TableCell>NT${row.total}</TableCell>
+              <TableCell>{row.status}</TableCell>
             </TableRow>
           ))}
+          <TableRow>
+            <TableCell colSpan={4}/>
+            <TableCell>Total Orders:</TableCell>
+            <TableCell>{rows.length}</TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>
+    </Box>
   );
-}
+};
 

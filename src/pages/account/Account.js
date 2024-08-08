@@ -5,13 +5,14 @@ import { Outlet } from 'react-router-dom';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded';
+import dog from '../../images/avatar_dog.jpg';
 
 export const Account = () => {
   return (
     <Container maxWidth="xl">
       <Grid container>
-        <Grid item xs={3} py={2} sx={{ background: '#CAC6C5', borderRadius: 3, alignItems: 'center',  display: 'flex', flexDirection: 'column' }}>
-          <Avatar sx={{ width: 100, height: 100, border: '3px solid #5B4F47', my:2.5  }} src="/avatar_dog.jpg" />
+        <Grid item xs={3} md={3} py={2} sx={{ background: '#CAC6C5', borderRadius: 3, alignItems: 'center', display: 'flex', flexDirection: 'column',ml: 5 }}>
+          <Avatar sx={{ width: 100, height: 100, border: '3px solid #5B4F47', my:2.5  }} src={dog} />
           <Button sx={{ color: 'white', background: '#5B4F47', '&:hover': {
             background: '#4B413A',
           },}} startIcon={<SettingsRoundedIcon />} variant='contained'>
@@ -25,8 +26,8 @@ export const Account = () => {
             <Link underline="none" href="/account/profile" color="#5B4F47">Profile 個人資料 </Link>
           </Button>
         </Grid>
-        <Grid item xs={8} 
-          sx={{ background: '#CAC6C5', borderRadius: 3, alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center', mx: 4 }}
+        <Grid item xs={6} md={8}
+          sx={{ background: '#CAC6C5', borderRadius: 3, alignItems: 'center', display: 'flex', flexDirection: 'column', ml: 5 }}
         >
           <Outlet/>
         </Grid>

@@ -45,6 +45,7 @@ function App() {
   const reducer = useReducer (cartReducer, cartInit);
 
  return(
+  <Router>
   <ThemeProvider theme={theme}>
   <CartContext.Provider value={reducer}>
   <Container disableGutters maxWidth="xl" >
@@ -76,6 +77,7 @@ function App() {
   </Container>
   </CartContext.Provider>
   </ThemeProvider>
+  </Router>
  )
 }
 

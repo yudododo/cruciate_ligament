@@ -1,30 +1,46 @@
 import React from 'react'
 import { Typography, Container, Grid, Box } from '@mui/material';
+import cruciate_ligament_02 from '../images/cruciate_ligament_02.jpg';
+import cruciate_ligament_03 from  '../images/cruciate_ligament_03.jpg';
 export const About = () => {
   return (
     <Container maxWidth="xl">
       <Grid container>
-        <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} ><img 
-            src="/cruciate_ligament_02.png" alt="bg"
-            style={{ width: '100%', maxWidth: 1000, height: 'auto', borderRadius: '50px' }}
-          /></Grid>
-        <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} >
           <img 
-            src="/cruciate_ligament_03.jpg" alt="bg"
-            style={{ width: '100%', maxWidth: 400, height: 'auto', borderRadius: '120px' }}
+            src={cruciate_ligament_02} alt="bg"
+            style={{ width: '100%', maxWidth: 1000, height: 'auto', borderRadius: '50px' }}
           />
         </Grid>
+        
         <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', p: { xs: 2, sm: 5, md: 10 }, }}>
-          <Typography variant="h5" align="center" sx={{ fontSize: { xs: '0.9rem', sm: '1.4rem', md: '1.6rem' }}}>
-            Macrame 是一種的編織法，單用雙手重複打各種「結」就可以完成✓
+          <Typography variant="h6" align="center" sx={{ fontSize: { xs: '0.9rem', sm: '1.4rem', md: '1.6rem' }}}>
+            每個人都在尋找自己的出路，而我在茫茫大海中遇見了編織✿
+            <br/>
+            喜歡每次的出攤，遇到的每一個人，
           </Typography>
           <br/>
-          <Typography variant="h6"sx={{ fontSize: { xs: '0.8rem', sm: '1.2rem', md: '1.3rem' }}}>
-            打排球造成前十字韌帶斷裂，開刀後多了很多時間在家休養，看著Youtube學編織，發現編織很好玩✿
-            <br/>The anterior cruciate ligament was ruptured due to playing volleyball, and I had surgery in November in 2022. Resting at home has given me more time to learn how to knit.◍ꕀꕀ
+          <Typography variant="body"sx={{ fontSize: { xs: '0.8rem', sm: '1.2rem', md: '1.3rem' }}}>
+            儘管只是一面之緣，每一次的交流和分享，都讓我感受到編織的溫暖與美好。
+            <br/>
+            編織，不僅僅是一種技藝，更是一種情感的傳遞和生活的態度。
+            <br/>
+            每一個作品，都是用心編織而成，蘊含著我對生活的熱愛與對夢想的追求。
+            <br/>
+            在這個快節奏的時代，編織給了我一個慢下來的理由，讓我在一針一線間找到內心的平靜和滿足。
+            <br/>
+            希望每一位朋友，都能找到屬於自己的溫暖與幸福。
+            <br/>
+            歡迎來到我的編織世界，讓我們一起分享這份溫暖與美好◍ꕀꕀ
           </Typography>
           </Box>
+        </Grid>
+        <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <img 
+            src={cruciate_ligament_03} alt="bg"
+            style={{ width: '100%', maxWidth: 400, height: 'auto', borderRadius: '50px' }}
+          />
         </Grid>
       </Grid>
     </Container>
