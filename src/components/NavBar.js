@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { MyMenu } from '../components/MyMenu';
 import { Cart } from '../components/Cart';
-// import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem, Link } from '@mui/material';
 import MenuIcon from '@mui/icons-material/MenuRounded';
 import logo_pic_only from '../images/logo_pic_only.png';
@@ -98,13 +98,13 @@ export const NavBar = () => {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               <MenuItem key="Home" onClick={handleCloseNavMenu}>
-                <Link underline="none" href="/" color="#5B4F47">Home</Link>
+                <Link component={RouterLink} underline="none" to="/" color="#5B4F47">Home</Link>
               </MenuItem>
               <MenuItem>
-                <Link underline="none" href="/about" color="#5B4F47">About</Link>
+                <Link component={RouterLink} underline="none" to="/about" color="#5B4F47">About</Link>
               </MenuItem>
               <MenuItem>
-                <Link underline="none" href="/shop" color="#5B4F47">Shop</Link>
+                <Link component={RouterLink} underline="none" to="/shop" color="#5B4F47">Shop</Link>
               </MenuItem>
             </Menu>
           </Box>
@@ -132,10 +132,10 @@ export const NavBar = () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button sx={{ my: 2, display: 'block' }}>
-              <Link underline="none" href="/" color="#5B4F47">Home</Link>
+              <Link component={RouterLink} underline="none" to="/" color="#5B4F47">Home</Link>
             </Button>
             <Button sx={{ my: 2, color: '#B6846B', display: 'block' }}>
-              <Link underline="none" href="/about" color="#5B4F47">About</Link>
+              <Link component={RouterLink} underline="none" to="/about" color="#5B4F47">About</Link>
             </Button>
             <Button
               sx={{ my: 2, color: '#5B4F47', display: 'block' }}
@@ -161,7 +161,7 @@ export const NavBar = () => {
             >
               {shopOptions.map((option) => (
                 <MenuItem key={option} onClick={handleCloseShopMenu}>
-                  <Link underline="none" href={`/shop/${option.path}`} color="#5B4F47">
+                  <Link component={RouterLink} underline="none"to={`/shop/${option.path}`} color="#5B4F47">
                   {option.label}
                   </Link>
                 </MenuItem>
