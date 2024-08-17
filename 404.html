@@ -1,8 +1,17 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0; url=./#/" />
-  </head>
-  <body>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0;url=/#/404" />
+  <script>
+    // This script allows us to redirect users to the correct route
+    var path = window.location.pathname;
+    var hash = '#' + path;
+    window.location.replace(hash);
+  </script>
+  <title>Redirecting...</title>
+</head>
+<body>
+  Redirecting...
+</body>
 </html>
