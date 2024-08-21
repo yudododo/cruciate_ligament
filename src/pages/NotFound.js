@@ -22,7 +22,16 @@ export const NotFound = () => {
         variant="contained"
         component={RouterLink}
         to="/"
-        sx={{ mt: 2 }}
+        sx={{ 
+          mb:3 , 
+          background:'#5B4F47',
+          color: '#fff',
+          borderRadius: '50px', 
+          textTransform: 'none', 
+          '&:hover': {
+            background: '#4B413A',
+            },
+          }}
       >
         Go Back Home
       </Button>

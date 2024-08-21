@@ -5,6 +5,7 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import { Link as RouterLink} from  'react-router-dom';
 
 const icons = {
   'Orders 訂購紀錄': BorderColorRoundedIcon,
@@ -38,7 +39,7 @@ export const MyMenu = ({ anchorEl, open, onClose, settings }) => {
               {IconComponent && <IconComponent style={{ color: '#B6846B' }} />}
             </ListItemIcon>
             {/* <Typography textAlign="center" color="#B6846B">{setting}</Typography> */}
-            <Link underline="none" href="/login" color="#5B4F47">{setting}</Link>
+            <Link component={RouterLink} underline="none" to="/login" color="#5B4F47">{setting}</Link>
           </MenuItem>
         );
       })}

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react';
-
 import { MyMenu } from '../components/MyMenu';
 import { Cart } from '../components/Cart';
 import { Link as RouterLink } from 'react-router-dom';
@@ -51,26 +50,27 @@ export const NavBar = () => {
       <Container maxWidth="xl" sx={{ flexGrow: 1 }}>
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Link component={RouterLink} underline="none" to="/" color="#5B4F47" display= 'flex' flexDirection='row'>
             <img src={logo_pic_only} alt="logo" width={35} height={35} />
-          </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mx: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontWeight: 600,
-              letterSpacing: '.2rem',
-              color: '#B6846B',
-              textDecoration: 'none',
-            }}
-          >
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              sx={{
+                mx: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontWeight: 600,
+                letterSpacing: '.2rem',
+                color: '#B6846B',
+                textDecoration: 'none',
+              }}
+            >
             拾字韌袋
-          </Typography>
+            </Typography>
+          </Link>
+          </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -104,32 +104,56 @@ export const NavBar = () => {
                 <Link component={RouterLink} underline="none" to="/about" color="#5B4F47">About</Link>
               </MenuItem>
               <MenuItem>
-                <Link component={RouterLink} underline="none" to="/shop" color="#5B4F47">Shop</Link>
+                <Typography color="#5B4F47" onClick={handleOpenShopMenu} >Shop</Typography>
               </MenuItem>
+                <Menu
+                id="shop-menu"
+                anchorEl={anchorElShop}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElShop)}
+                onClose={handleCloseShopMenu}
+                sx={{ display: { xs: 'block', md: 'none' } }}
+              >
+                {shopOptions.map((option) => (
+                  <MenuItem key={option.path} onClick={handleCloseShopMenu}>
+                    <Link component={RouterLink} underline="none" to={`/shop/${option.path}`} color="#5B4F47">
+                      {option.label}
+                    </Link>
+                  </MenuItem>
+                ))}
+              </Menu>
             </Menu>
           </Box>
 
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          <Box width='100%' justifyContent='center' sx={{display: { xs: 'flex', md: 'none' } }}>
+            <Link component={RouterLink} underline="none" to="/" color="#5B4F47" display= 'flex' flexDirection='row'  >
             <img src={logo_pic_only} alt="logo" width={35} height={35} />
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                sx={{
+                  mx: 2,
+                  display: { xs: 'flex', md: 'none' },
+                  // flexGrow: 1,
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: '#B6846B',
+                  textDecoration: 'none',
+                }}
+              >
+                拾字韌袋
+              </Typography>
+            </Link>
           </Box>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mx: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: '#B6846B',
-              textDecoration: 'none',
-            }}
-          >
-            拾字韌袋
-          </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button sx={{ my: 2, display: 'block' }}>
               <Link component={RouterLink} underline="none" to="/" color="#5B4F47">Home</Link>
@@ -168,7 +192,6 @@ export const NavBar = () => {
               ))}
             </Menu>
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu}>

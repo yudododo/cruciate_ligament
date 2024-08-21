@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+## Overview👀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+打排球造成前十字韌帶斷裂，開刀後多了很多時間在家休養，看著 Youtube 學編織，發現編織很好玩，
+因此為自己的品牌"拾字韌袋"創了一個購物商城✿✿✿
 
-## Available Scripts
+<a href="https://www.figma.com/design/ctRkPfFX0ZszZKhPUu02te/cruciate_ligament?node-id=0-1&t=Y2fHmCLBtg2tne3p-1" target="_blank">
+ 點擊觀看 figma 流程圖
+</a>
 
-In the project directory, you can run:
 
-### `npm start`
+## Screenshot🐻💥
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<!-- <a href="" target="_blank">
+ <img src="./images/screenshot.png" style="width: 80%;" alt="Screenshot">
+ 點擊觀看 demo 影片
+</a> -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## The challenge🔥
 
-### `npm run build`
+拾字韌袋網站，為喜愛手作品的客人提供網頁查看商品，具完整前後台架構。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+勾選為已完成項目 ✅
+用戶前台
+- 產品列表、單一產品呈現 ✅
+- 加入購物車 ✅
+- 表單驗證
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+用戶後台：
+- 基本資料修改
+- 訂單查詢/變更
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+管理者後台 
+- 登入驗證
+- 授權管理、路由保護
+- 資料新增、編輯、刪除
+- 產品、優惠卷、訂單管理

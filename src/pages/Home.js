@@ -5,15 +5,15 @@ import cruciate_ligament_01 from '../images/cruciate_ligament_01.jpg';
 export const Home = () => {
   return (
     <Container maxWidth="xl">
-      <Grid container>
-        <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Grid container direction={{ xs: 'column', sm: 'row' }}>
+        <Grid item xs={5} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <img 
             src={cruciate_ligament_01} alt="bg"
-            style={{ width: '100%', maxWidth: 400, height: 'auto', borderRadius: '120px' }}
+            style={{ width: '100%', maxWidth: 340, height: 'auto', borderRadius: '100px' }}
           />
         </Grid>
         <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', p: { xs: 2, sm: 5, md: 10 }, }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', p: { xs: 2, sm: 5, md: 9 }, }}>
           <Typography variant="h5" align="center" sx={{ fontSize: { xs: '0.9rem', sm: '1.4rem', md: '1.6rem' }}}>
             Macrame 是一種的編織法，單用雙手重複打各種「結」就可以完成✓
           </Typography>

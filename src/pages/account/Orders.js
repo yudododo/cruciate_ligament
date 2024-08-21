@@ -7,8 +7,6 @@ export const Orders = () => {
   }
   const rows = [
     createData('#123', '花花長掛繩', 'Pick up from store', 'Online by card', '490', 'Processing'),
-    
-    // Add more rows if needed
   ];
   return (
     <Box py={6} px={12} sx={{ width:'100%'}}>

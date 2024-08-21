@@ -1,6 +1,4 @@
-import React from 'react';
 import { Products } from '../../components/Products';
-
 import { Typography } from '@mui/material';
 
 export const All = () => {

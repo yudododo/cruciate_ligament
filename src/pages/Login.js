@@ -1,13 +1,15 @@
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
 // import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
+//應該是做到登入但沒辦法進入 account
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import {Avatar, Button,TextField, Grid, Box, Typography, Container, Link } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 // import emailLogin from '../firebase/auth/emailLogin';
 import line_logo from '../images/line.png';
+import { Link as RouterLink } from 'react-router-dom';
 
 // import { useSelector } from 'react-redux';
 // import useSignin from '@/hooks/api/useSignin';
@@ -28,12 +30,12 @@ export const Login = () => {
     console.log(data)
   }
 
-  const submit = async(e) => {
-    const res = await axios.post('/v2/api/admin/sign', data)
-    console.log(res)
-    const productRes = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/products/all`)
-    console.log(productRes)
-  }
+  // const submit = async(e) => {
+  //   const res = await axios.post('/v2/api/admin/sign', data)
+  //   console.log(res)
+  //   const productRes = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/products/all`)
+  //   console.log(productRes)
+  // }
 
   const observerRef = useRef(null);
 
@@ -92,15 +94,15 @@ export const Login = () => {
   //   return navigate.push('/account');
   // }
 
-  //那時候要跳轉頁面的
-  // const navigate = useNavigate(); // 初始化 useNavigate
+  // 那時候要跳轉頁面的
+  const navigate = useNavigate(); // 初始化 useNavigate
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   // 模拟登录操作，然后导航到 /account
-  //   console.log('click');
-  //   navigate('/account'); // 使用 navigate 进行导航
-  // }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // 模拟登录操作，然后导航到 /account
+    console.log('click');
+    navigate('/account/orders'); // 使用 navigate 进行导航
+  }
 
 
   return (
@@ -212,18 +214,19 @@ export const Login = () => {
                 background: '#4B413A',
                 },
               }}
-            onClick={submit}
+            onClick={handleSubmit}
+            // onClick={Submit}
           >
             Log in 登入
           </Button>
         <Grid container justifyContent="space-between" alignItems="center" sx={{mb:3}}>
           <Grid item sx={{'a:hover ': {borderBottom: '1px solid #5B4F47'}}}>
-            <Link href="/resetPassword" sx={{ fontSize: 12, textDecoration:'none', color:'#FFFFFF' }}>
+            <Link component={RouterLink} to="/resetPassword" sx={{ fontSize: 12, textDecoration:'none', color:'#FFFFFF' }}>
               Forgot password? 忘記密碼
             </Link>
           </Grid>
           <Grid item sx={{'a:hover ': {borderBottom: '1px solid #5B4F47'}}}>
-            <Link href="/signup" sx={{ fontSize: 12,textDecoration:'none', color:'#FFFFFF'}}>
+            <Link component={RouterLink} to="/signup" sx={{ fontSize: 12,textDecoration:'none', color:'#FFFFFF'}}>
               Sign Up 註冊
             </Link>
           </Grid>

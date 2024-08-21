@@ -4,12 +4,11 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import logo_w from '../images/logo_w.png';
 import { Link as RouterLink } from 'react-router-dom';
 
-
 export const Footer = () => {
   return (
     <Container maxWidth="xl" sx={{ bgcolor: '#AC9E97', minHeight: 135}} >
       <Grid container spacing={2}>
-        <Grid item xs={4.5} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <Grid item xs={9} sm={4.5} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <img 
           src={logo_w}
           alt="logo"
@@ -27,7 +26,7 @@ export const Footer = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={2.5}>
+        <Grid item xs={2.5} sx={{ display: { xs: 'none', sm: 'block'} }}>
           <Typography variant="subtitle2"><Link component={RouterLink} underline="none" color="#5B4F47" to="/shop/all" >Shop</Link ></Typography>
           <Typography variant="caption"><Link component={RouterLink} underline="none" color="#5B4F47" to='/shop/all'>All Products | 全部商品</Link></Typography><br/>
 
@@ -35,7 +34,7 @@ export const Footer = () => {
           <Typography variant="caption"><Link component={RouterLink} underline="none" color="#5B4F47" to='/shop/keychain'>Key Chain | 鑰匙圈</Link></Typography> <br/>
           <Typography variant="caption"><Link component={RouterLink} underline="none" color="#5B4F47" to='/shop/drinkholder'>Drink Holder | 飲料袋</Link></Typography>
         </Grid>
-        <Grid item xs={2.5}>
+        <Grid item xs={2.5} sx={{ display: { xs: 'none', sm: 'block'} }}>
           <Typography variant="subtitle2"><Link underline="none" color="#5B4F47" >Learn</Link ></Typography>
           <Typography variant="caption"><Link underline="none" color="#5B4F47">About Us</Link></Typography><br/>
           <Typography variant="caption"><Link underline="none" color="#5B4F47">FAQs</Link></Typography> <br/>
