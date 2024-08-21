@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cruciate_ligament/static/css/main.a48e9355.css",
-    "main.js": "/cruciate_ligament/static/js/main.09bf967b.js",
+    "main.js": "/cruciate_ligament/static/js/main.69e7e475.js",
     "static/js/453.b4932a4c.chunk.js": "/cruciate_ligament/static/js/453.b4932a4c.chunk.js",
     "static/media/cruciate_ligament_03.jpg": "/cruciate_ligament/static/media/cruciate_ligament_03.68b797d9aba6425b9b58.jpg",
     "static/media/phonestrap08.jpg": "/cruciate_ligament/static/media/phonestrap08.9b1f4588b1818286fee4.jpg",
@@ -24,11 +24,11 @@
     "static/media/line.png": "/cruciate_ligament/static/media/line.b57ab1148d6223d27e66.png",
     "index.html": "/cruciate_ligament/index.html",
     "main.a48e9355.css.map": "/cruciate_ligament/static/css/main.a48e9355.css.map",
-    "main.09bf967b.js.map": "/cruciate_ligament/static/js/main.09bf967b.js.map",
+    "main.69e7e475.js.map": "/cruciate_ligament/static/js/main.69e7e475.js.map",
     "453.b4932a4c.chunk.js.map": "/cruciate_ligament/static/js/453.b4932a4c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a48e9355.css",
-    "static/js/main.09bf967b.js"
+    "static/js/main.69e7e475.js"
   ]
 }
