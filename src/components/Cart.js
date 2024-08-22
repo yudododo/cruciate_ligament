@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 
 import { CartContext } from '../store';
-import {Box, Drawer,Button, List, ListItem, ListItemText, Divider, IconButton, Typography, TextField, Badge} from '@mui/material';
+import {Box, Drawer,Button, List, ListItem, ListItemText, Divider, IconButton, Typography, TextField, Badge, Link} from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { Link as RouterLink } from 'react-router-dom';
 
 export const Cart = () => {
   const [ state, dispatch ] = useContext(CartContext);
@@ -81,8 +82,10 @@ export const Cart = () => {
             '&:hover': {
               background: '#4B413A',
             },
-          }} >
-        結帳 Checkout
+          }}
+        onClick={toggleDrawer(false)}
+        >
+        <Link component={RouterLink} underline="none" to="/login" color="white">結帳 Checkout</Link>
       </Button>
     </Box>
   </Box>

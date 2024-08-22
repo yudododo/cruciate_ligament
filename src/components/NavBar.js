@@ -212,8 +212,8 @@ export const NavBar = () => {
                 onClose={handleCloseLearnMenu}
                 sx={{ display: { xs: 'none', md: 'block' } }}
               >
-              <MenuItem onClick={handleCloseLearnMenu}>
-                <Link component={RouterLink} underline="none" to="/learn/about" color="#5B4F47">
+                <MenuItem onClick={handleCloseLearnMenu}>
+                  <Link component={RouterLink} underline="none" to="/learn/about" color="#5B4F47">
                     About 關於我
                   </Link>
                 </MenuItem>
