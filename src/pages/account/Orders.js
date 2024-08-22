@@ -9,7 +9,7 @@ export const Orders = () => {
     createData('#123', '花花長掛繩', 'Pick up from store', 'Online by card', '490', 'Processing'),
   ];
   return (
-    <Box py={6} px={12} sx={{ width:'100%'}}>
+    <Box py={{ xs: 3, md: 6 }} px={{ xs: 6, md: 12 }} sx={{ width:'100%'}}>
     <Typography align="left" variant="h6" sx={{color: '#5B4F47', fontWeight: '700', mb: 1}}>
       Order History 訂購紀錄
     </Typography>

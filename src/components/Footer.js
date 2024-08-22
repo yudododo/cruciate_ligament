@@ -1,4 +1,3 @@
-import React from 'react';
 import {Typography, Container, Box, Grid, Link} from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import logo_w from '../images/logo_w.png';
@@ -36,8 +35,8 @@ export const Footer = () => {
         </Grid>
         <Grid item xs={2.5} sx={{ display: { xs: 'none', sm: 'block'} }}>
           <Typography variant="subtitle2"><Link underline="none" color="#5B4F47" >Learn</Link ></Typography>
-          <Typography variant="caption"><Link underline="none" color="#5B4F47">About Us</Link></Typography><br/>
-          <Typography variant="caption"><Link underline="none" color="#5B4F47">FAQs</Link></Typography> <br/>
+          <Typography variant="caption"><Link component={RouterLink} underline="none" color="#5B4F47" to="/about">About Us</Link></Typography><br/>
+          <Typography variant="caption"><Link component={RouterLink} underline="none" color="#5B4F47" to="/faq">FAQs</Link></Typography> <br/>
         </Grid>
         <Grid item xs={2.5}>
         <Typography variant="subtitle2"><Link underline="none" color="#5B4F47">Follow Us</Link ></Typography>

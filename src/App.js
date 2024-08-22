@@ -19,8 +19,8 @@ import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { CartContext, cartReducer, cartInit } from './store';
 import { NotFound } from './pages/NotFound';
+import { FAQs } from './pages/FAQs';
 // import axios from 'axios';
-
 
 import './index.css'; 
 
@@ -68,6 +68,7 @@ function App() {
         <Route path="setting" element={<Setting />}></Route>
         <Route path="orders" element={<Orders />}></Route>
       </Route>
+      <Route path="/faqs" element={<FAQs/>}></Route>
       <Route path="*" element={<NotFound/>} />
     </Routes>
     </Box>
