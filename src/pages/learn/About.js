@@ -1,6 +1,6 @@
 import { Typography, Container, Grid, Box } from '@mui/material';
-import cruciate_ligament_02 from '../images/cruciate_ligament_02.jpg';
-import cruciate_ligament_03 from  '../images/cruciate_ligament_03.jpg';
+import cruciate_ligament_02 from '../../images/cruciate_ligament_02.jpg';
+import cruciate_ligament_03 from  '../../images/cruciate_ligament_03.jpg';
 export const About = () => {
   return (
     <Container maxWidth="xl">

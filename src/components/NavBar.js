@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState } from 'react';
 import { MyMenu } from '../components/MyMenu';
 import { Cart } from '../components/Cart';
@@ -6,7 +5,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem, Link } from '@mui/material';
 import MenuIcon from '@mui/icons-material/MenuRounded';
 import logo_pic_only from '../images/logo_pic_only.png';
-
 
 const settings = ['Orders 訂購紀錄', 'Profile 帳戶資料', 'Setting 設定', 'Logout 登出'];
 const shopOptions = [
@@ -20,6 +18,7 @@ export const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElShop, setAnchorElShop] = useState(null);
+  const [anchorElLearn, setAnchorElLearn] = useState(null);
 
   const handleOpenNavMenu = (e) => {
     setAnchorElNav(e.currentTarget);
@@ -31,6 +30,9 @@ export const NavBar = () => {
 
   const handleOpenShopMenu = (e) => {
     setAnchorElShop(e.currentTarget);
+  };
+  const handleOpenLearnMenu = (e) => {
+    setAnchorElLearn(e.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -45,10 +47,15 @@ export const NavBar = () => {
     setAnchorElShop(null);
   };
 
+  const handleCloseLearnMenu = () => {
+    setAnchorElLearn(null);
+  };
+
   return (
     <AppBar position="fixed" sx={{ background: 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.4) 100%)' }}>
       <Container maxWidth="xl" sx={{ flexGrow: 1 }}>
         <Toolbar disableGutters>
+          {/* 電腦版 */}
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
           <Link component={RouterLink} underline="none" to="/" color="#5B4F47" display= 'flex' flexDirection='row'>
             <img src={logo_pic_only} alt="logo" width={35} height={35} />
@@ -69,7 +76,7 @@ export const NavBar = () => {
             </Typography>
           </Link>
           </Box>
-
+          {/* 手機板 */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
             <IconButton
               size="large"
@@ -101,8 +108,35 @@ export const NavBar = () => {
                 <Link component={RouterLink} underline="none" to="/" color="#5B4F47">Home</Link>
               </MenuItem>
               <MenuItem>
-                <Link component={RouterLink} underline="none" to="/about" color="#5B4F47">About</Link>
+                <Typography color="#5B4F47" onClick={handleOpenLearnMenu}> Learn </Typography>
               </MenuItem>
+              <Menu
+                id="learn-menu"
+                anchorEl={anchorElLearn}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElLearn)}
+                onClose={handleCloseLearnMenu}
+                sx={{ display: { xs: 'block', md: 'none' } }}
+              >
+                <MenuItem onClick={handleCloseLearnMenu}>
+                  <Link component={RouterLink} underline="none" to="/learn/about" color="#5B4F47">
+                    About 關於我
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseLearnMenu}>
+                  <Link component={RouterLink} underline="none" to="/learn/faqs" color="#5B4F47">
+                    FAQs 常見問題
+                  </Link>
+                </MenuItem>
+              </Menu>
               <MenuItem>
                 <Typography color="#5B4F47" onClick={handleOpenShopMenu} >Shop</Typography>
               </MenuItem>
@@ -132,7 +166,7 @@ export const NavBar = () => {
               </Menu>
             </Menu>
           </Box>
-
+          {/* 手機板 */}
           <Box width='100%' justifyContent='center' sx={{display: { xs: 'flex', md: 'none' } }}>
             <Link component={RouterLink} underline="none" to="/" color="#5B4F47" display= 'flex' flexDirection='row'  >
             <img src={logo_pic_only} alt="logo" width={35} height={35} />
@@ -143,7 +177,6 @@ export const NavBar = () => {
                 sx={{
                   mx: 2,
                   display: { xs: 'flex', md: 'none' },
-                  // flexGrow: 1,
                   fontWeight: 700,
                   letterSpacing: '.3rem',
                   color: '#B6846B',
@@ -154,13 +187,42 @@ export const NavBar = () => {
               </Typography>
             </Link>
           </Box>
+          {/* 電腦版 */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button sx={{ my: 2, display: 'block' }}>
               <Link component={RouterLink} underline="none" to="/" color="#5B4F47">Home</Link>
             </Button>
-            <Button sx={{ my: 2, color: '#B6846B', display: 'block' }}>
-              <Link component={RouterLink} underline="none" to="/about" color="#5B4F47">About</Link>
+            <Button sx={{ my: 2, color: '#5B4F47', display: 'block' }}
+            onClick={handleOpenLearnMenu}>
+              Learn
             </Button>
+              <Menu
+                id="learn-menu"
+                anchorEl={anchorElLearn}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElLearn)}
+                onClose={handleCloseLearnMenu}
+                sx={{ display: { xs: 'none', md: 'block' } }}
+              >
+              <MenuItem onClick={handleCloseLearnMenu}>
+                <Link component={RouterLink} underline="none" to="/learn/about" color="#5B4F47">
+                    About 關於我
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseLearnMenu}>
+                  <Link component={RouterLink} underline="none" to="/learn/faqs" color="#5B4F47">
+                    FAQs 常見問題
+                  </Link>
+                </MenuItem>
+              </Menu>
             <Button
               sx={{ my: 2, color: '#5B4F47', display: 'block' }}
               onClick={handleOpenShopMenu}
@@ -192,10 +254,11 @@ export const NavBar = () => {
               ))}
             </Menu>
           </Box>
+          {/* UserMenu */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Annie Chen" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <MyMenu

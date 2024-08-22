@@ -1,5 +1,4 @@
 import { Products } from '../../components/Products';
-
 import { Typography } from '@mui/material';
 
 export const Drinkholder = () => {
