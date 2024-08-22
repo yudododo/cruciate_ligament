@@ -1,19 +1,9 @@
 import { Typography, Container, Grid, Box } from '@mui/material';
-import cruciate_ligament_02 from '../../images/cruciate_ligament_02.jpg';
 import cruciate_ligament_03 from  '../../images/cruciate_ligament_03.jpg';
 export const About = () => {
   return (
     <Container maxWidth="xl">
       <Grid container sx={{background:"#D9D9D9"}}>
-        {/* <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} >
-          <img 
-            src={cruciate_ligament_02} alt="bg"
-            style={{ width: '100%', maxWidth: 1000, height: 'auto', 
-              borderRadius: '15px',
-               opacity: 0.5 }}
-          />
-        </Grid> */}
-        
         <Grid item xs={6} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', p: { xs: 2, sm: 5, md: 10 }, }}>
           <Typography variant="h6" align="center" sx={{ fontSize: { xs: '0.9rem', sm: '1.3rem', md: '1.5rem' }}}>

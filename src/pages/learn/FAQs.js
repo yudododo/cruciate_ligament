@@ -1,11 +1,12 @@
-import { Container,Typography, Accordion, AccordionActions, AccordionSummary, AccordionDetails, Button} from '@mui/material';
+import { Container, Box, Typography, Accordion, AccordionSummary, AccordionDetails} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const FAQs = () => {
   return (
+  <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
     <Container maxWidth="xl" >
       <Typography variant="h5" sx={{ textAlign: "center", mt: 2 }}>FAQs 常見問題</Typography>
-      <Accordion>
+      <Accordion defaultExpanded>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
@@ -31,7 +32,7 @@ export const FAQs = () => {
         - 超商取貨：投遞後約3-4天到指定超商。商品皆手工製作，會看到些許線頭介意者請謹慎下單 。
         </AccordionDetails>
       </Accordion>
-      <Accordion defaultExpanded>
+      <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel3-content"
@@ -44,6 +45,7 @@ export const FAQs = () => {
         </AccordionDetails>
       </Accordion>
     </Container>
+    </Box>
   );
 }
 
