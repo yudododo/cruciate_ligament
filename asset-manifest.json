@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cruciate_ligament/static/css/main.a48e9355.css",
-    "main.js": "/cruciate_ligament/static/js/main.b728a827.js",
+    "main.js": "/cruciate_ligament/static/js/main.8d0f6ccc.js",
     "static/js/453.b4932a4c.chunk.js": "/cruciate_ligament/static/js/453.b4932a4c.chunk.js",
     "static/media/cruciate_ligament_03.jpg": "/cruciate_ligament/static/media/cruciate_ligament_03.68b797d9aba6425b9b58.jpg",
     "static/media/phonestrap08.jpg": "/cruciate_ligament/static/media/phonestrap08.9b1f4588b1818286fee4.jpg",
@@ -19,16 +19,15 @@
     "static/media/cruciate_ligament_01.jpg": "/cruciate_ligament/static/media/cruciate_ligament_01.b3f86f4c23ecd13ae9c4.jpg",
     "static/media/phonestrap05.jpg": "/cruciate_ligament/static/media/phonestrap05.b9a6062eb03ca5c45c9a.jpg",
     "static/media/phonestrap02.jpg": "/cruciate_ligament/static/media/phonestrap02.3cfe98cecdb1b49d3c35.jpg",
-    "static/media/cruciate_ligament_02.jpg": "/cruciate_ligament/static/media/cruciate_ligament_02.7afae17db12d0adc64f1.jpg",
     "static/media/keychain03.jpg": "/cruciate_ligament/static/media/keychain03.d739b40e96f6fe602158.jpg",
     "static/media/line.png": "/cruciate_ligament/static/media/line.b57ab1148d6223d27e66.png",
     "index.html": "/cruciate_ligament/index.html",
     "main.a48e9355.css.map": "/cruciate_ligament/static/css/main.a48e9355.css.map",
-    "main.b728a827.js.map": "/cruciate_ligament/static/js/main.b728a827.js.map",
+    "main.8d0f6ccc.js.map": "/cruciate_ligament/static/js/main.8d0f6ccc.js.map",
     "453.b4932a4c.chunk.js.map": "/cruciate_ligament/static/js/453.b4932a4c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a48e9355.css",
-    "static/js/main.b728a827.js"
+    "static/js/main.8d0f6ccc.js"
   ]
 }
