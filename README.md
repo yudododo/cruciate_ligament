@@ -3,18 +3,18 @@
 打排球造成前十字韌帶斷裂，開刀後多了很多時間在家休養，看著 Youtube 學編織，發現編織很好玩，
 因此為自己的品牌"拾字韌袋"創了一個購物商城✿✿✿
 
-<a href="https://www.figma.com/design/ctRkPfFX0ZszZKhPUu02te/cruciate_ligament?node-id=0-1&t=Y2fHmCLBtg2tne3p-1" target="_blank">
+<a href="https://www.figma.com/design/ctRkPfFX0ZszZKhPUu02te/cruciate_ligament?node-id=0-1&t=Y2fHmCLBtg2tne3p-1">
  點擊觀看 figma 流程圖
 </a>
 
 
 ## Screenshot🐻💥
 
-<a href="https://youtu.be/5ghNjXHNMZA" target="_blank">
+<a href="https://youtu.be/5ghNjXHNMZA">
  <img src="./src/images/screenshot_01.png" style="width: 70%;" alt="Screenshot">
  <br/>
  <img src="./src/images/screenshot_mobile_01.png" style="width: 70%;" alt="Screenshot">
-
+ <br/>
  點擊觀看 demo 影片
 </a>
 
