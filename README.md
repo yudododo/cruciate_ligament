@@ -10,10 +10,13 @@
 
 ## Screenshot🐻💥
 
-<!-- <a href="" target="_blank">
- <img src="./images/screenshot.png" style="width: 80%;" alt="Screenshot">
+<a href="https://youtu.be/5ghNjXHNMZA" target="_blank">
+ <img src="./src/images/screenshot_01.png" style="width: 70%;" alt="Screenshot">
+ <br/>
+ <img src="./src/images/screenshot_mobile_01.png" style="width: 70%;" alt="Screenshot">
+
  點擊觀看 demo 影片
-</a> -->
+</a>
 
 ## The challenge🔥
 
