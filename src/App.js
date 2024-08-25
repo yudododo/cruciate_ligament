@@ -21,7 +21,11 @@ import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { CartContext, cartReducer, cartInit } from './store';
 import { NotFound } from './pages/NotFound';
-// import axios from 'axios';
+import { DashBoard } from './pages/admin/DashBoard';
+import { ProductList } from './pages/admin/ProductList';
+import { CouponList } from './pages/admin/CouponList';
+import { OrderList } from './pages/admin/OrderList';
+import axios from 'axios';
 
 import './index.css'; 
 
@@ -35,14 +39,14 @@ const theme = createTheme({
 });
 
 function App() {
-  // useEffect(()=>{
-  //   // console.log(process.env.REACT_APP_API_URL, process.env.REACT_APP_API_PATH)
-  //   (async()=>{
-  //     const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products/all`)
-  //     console.log(res)
-  //   })();
+  useEffect(()=>{
+    // console.log(process.env.REACT_APP_API_URL, process.env.REACT_APP_API_PATH)
+    (async()=>{
+      const res = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/products/all`)
+      // console.log(res)
+    })();
     
-  // }, [])
+  }, [])
   const reducer = useReducer (cartReducer, cartInit);
 
  return(
@@ -73,6 +77,11 @@ function App() {
         <Route path="orders" element={<Orders />}></Route>
       </Route>
       <Route path="*" element={<NotFound/>} />
+      <Route path="/admin" element={<DashBoard />}>
+      <Route path="productList" element={<ProductList />}></Route>
+        <Route path="couponList" element={<CouponList />}></Route>
+        <Route path="orderList" element={<OrderList />}></Route>
+      </Route>
     </Routes>
     </Box>
      <Box>

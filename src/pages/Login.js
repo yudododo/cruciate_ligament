@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 // import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
 //應該是做到登入但沒辦法進入 account
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import {Avatar, Button,TextField, Grid, Box, Typography, Container, Link } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
@@ -25,17 +25,33 @@ export const Login = () => {
 
   const handleChange = (e) => {
     const {name, value} = e.target
-    console.log(name, value)
+    // console.log(name, value)
     setData({...data, [name]: value})
     console.log(data)
   }
 
-  // const submit = async(e) => {
-  //   const res = await axios.post('/v2/api/admin/sign', data)
-  //   console.log(res)
-  //   const productRes = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/products/all`)
-  //   console.log(productRes)
-  // }
+  const submit = async(e) => {
+    const res = await axios.post('/v2/admin/signin', data)
+    const { token, expired } = res.data
+    console.log(res.data)
+    document.cookie = `cruToken=${token}; expires=${new Date(expired)}` ;
+    //儲存 token 
+  }
+  useEffect (()=>{
+    //取出 token
+    const token = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("cruToken="))
+      ?.split("=")[1];
+      console.log(token)
+    axios.defaults.headers.common['Authorization'] = token;
+
+    (async()=>{
+      const productRes = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/products/all`)
+      console.log(productRes)
+    })()
+  },[])
+  
 
   const observerRef = useRef(null);
 
@@ -214,8 +230,8 @@ export const Login = () => {
                 background: '#4B413A',
                 },
               }}
-            onClick={handleSubmit}
-            // onClick={Submit}
+            // onClick={handleSubmit}
+            onClick={submit}
           >
             Log in 登入
           </Button>

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Menu, MenuItem, ListItemIcon, Link } from '@mui/material';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded';

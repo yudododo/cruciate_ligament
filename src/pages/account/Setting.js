@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-
+import { useState } from 'react';
 import { Box, FormControl, FormGroup, TextField, Button, Typography } from '@mui/material';
 
 export const Setting = () => {
