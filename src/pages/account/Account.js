@@ -1,36 +1,138 @@
-import { Container, Button, Link, Grid, Avatar, Divider } from '@mui/material';
+import {
+  Container,
+  Grid,
+  Avatar,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Box,
+} from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded';
 import dog from '../../images/avatar_dog.jpg';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 export const Account = () => {
+  const location = useLocation();
   return (
-    <Container maxWidth="xl" >
-      <Grid container sx={{ flexDirection:  { xs: 'column', md: 'row' }}}>
-        <Grid item xs={12} md={3} py={2} sx={{ background: '#CAC6C5', borderRadius: 3, alignItems: 'center', justifyContent: { xs: 'center', md:'flex-start'}, display: 'flex', flexDirection: { xs: 'row', md: 'column' } , ml: { xs: 0, md: 5 }, mb: { xs: 2, md: 0 }}}>
-          <Avatar sx={{ width: {xs: 0, md: 100} , height: {xs: 0, md: 100}, border: {xs: '0px solid #5B4F47', md: '3px solid #5B4F47'} , my:2.5  }} src={dog} />
-          <Button sx={{ color: 'white', background: '#5B4F47', fontSize: { xs: '0.65rem', sm: '0.8rem', md: '1rem' } ,'&:hover': {
-            background: '#4B413A', fontSize: { xs: '0.75rem', sm: '0.8rem', md: '1rem' }
-          },}} startIcon={<SettingsRoundedIcon />} variant='contained'>
-            <Link component={RouterLink} underline="none" to="/account/setting" color="white">Setting 設定</Link>
-          </Button>
-          <Divider sx={{ width: '100%', my: 2.5 , display: { xs: 'none', md: 'flex' } }}/>
-          <Button sx={{ color: '#5B4F47', fontSize: { xs: '0.75rem', sm: '0.8rem', md: '1rem' }}} startIcon={<BorderColorRoundedIcon />}>
-            <Link component={RouterLink} underline="none"  to="/account/orders" color="#5B4F47">Orders 訂購紀錄</Link>
-          </Button>
-          <Button sx={{color: '#5B4F47', fontSize: { xs: '0.75rem', sm: '0.8rem', md: '1rem' }}} startIcon={<PersonRoundedIcon />}>
-            <Link component={RouterLink} underline="none" to="/account/profile" color="#5B4F47">Profile 個人資料 </Link>
-          </Button>
-        </Grid>
-        <Grid item xs={12} md={8}
-          sx={{ background: '#CAC6C5', borderRadius: 3, alignItems: 'center', display: 'flex', flexDirection: 'column', ml: { xs: 0, md: 5 }}}
+    <Container maxWidth='xl'>
+      <Grid container sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
+        <Grid
+          item
+          xs={12}
+          md={2.5}
+          sx={{
+            background: '#CAC6C5',
+            borderRadius: 3,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            ml: { xs: 0, md: 5 },
+            mb: { xs: 2, md: 0 },
+            py: { xs: 0, md: 2 },
+          }}
         >
-          <Outlet/>
+          <Avatar
+            src={dog}
+            sx={{
+              width: 100,
+              height: 100,
+              my: 2,
+              display: { xs: 'none', md: 'block' },
+              border: '3px solid #5B4F47',
+            }}
+          />
+          <Box
+            sx={{
+              width: '100%',
+              '& .MuiListSubheader-root': {
+                bgcolor: '#121212',
+                color: '#5B4F47',
+              },
+              '& .MuiListItemText-primary': {
+                color: '#5B4F47',
+                fontSize: { xs: '0.7rem', sm: '0.8rem', md: '1rem' },
+              },
+              '& .MuiListItemText-secondary': {
+                color: '#5B4F47',
+                fontSize: { xs: '0.5rem', sm: '0.7rem', md: '0.8rem' },
+              },
+              '& .MuiListItemIcon-root > svg': {
+                height: { xs: '1.4rem', md: '1.6rem' },
+                width: { xs: '1.4rem', md: '1.6rem' },
+              },
+              // "& .MuiTouchRipple-ripple": {
+              //     color: "#A98B73",
+              // },
+              '& .Mui-selected': {
+                bgcolor: '#B8B3B3',
+              },
+            }}
+          >
+            <List
+              disablePadding
+              disableGutters
+              dense
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'row', md: 'column' },
+              }}
+            >
+              {[
+                {
+                  text: 'Setting',
+                  sec: '設定',
+                  to: '/account/setting',
+                  icon: <SettingsRoundedIcon />,
+                },
+                {
+                  text: 'Orders',
+                  sec: '訂購紀錄',
+                  to: '/account/orders',
+                  icon: <BorderColorRoundedIcon />,
+                },
+                {
+                  text: 'Profile',
+                  sec: '個人資料',
+                  to: '/account/profile',
+                  icon: <PersonRoundedIcon />,
+                },
+              ].map((item, index) => (
+                <ListItem
+                  key={item.text}
+                  disablePadding
+                  disableGutters
+                  selected={location.pathname === item.to}
+                >
+                  <ListItemButton component={RouterLink} to={item.to}>
+                    <ListItemIcon >{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.text} secondary={item.sec} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={8}
+          sx={{
+            background: '#CAC6C5',
+            borderRadius: 3,
+            alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            ml: { xs: 0, md: 5 },
+          }}
+        >
+          <Outlet />
         </Grid>
       </Grid>
     </Container>
-  )
-}
+  );
+};
