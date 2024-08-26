@@ -104,7 +104,7 @@ export const DashBoard = () => {
         <Grid
           item
           xs={12}
-          md={8}
+          md={9}
           sx={{
             background: '#CAC6C5',
             borderRadius: 3,
@@ -112,6 +112,9 @@ export const DashBoard = () => {
             display: 'flex',
             flexDirection: 'column',
             ml: { xs: 0, md: 5 },
+            px: { xs: 5, md: 6 },
+            pt: { xs: 5, md: 5 },
+            pb: { xs: 5, md: 10 },
           }}
         >
           <Outlet />
