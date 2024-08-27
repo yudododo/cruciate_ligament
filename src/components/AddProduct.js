@@ -41,7 +41,7 @@ export default function AddProduct({
       fullWidth
       PaperProps={{
         sx: {
-          border: '2px solid #2F66B6',
+          border: '3px solid #5B4F47',
           borderRadius: 5,
         },
       }}
@@ -76,7 +76,17 @@ export default function AddProduct({
             label=''
             value={newProduct.classification}
             onChange={handleChange}
-            sx={{ flexGrow: 2, maxWidth: '65%' }}
+            sx={{ flexGrow: 2, maxWidth: '65%',
+              "& .MuiOutlinedInput-root": {
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#5B4F47",
+                  borderWidth: 1.5,
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#A98B73",
+                  borderWidth: 1.5,
+                },
+              }, }}
           />
         </Box>
         <Box
@@ -92,7 +102,18 @@ export default function AddProduct({
             label=''
             value={newProduct.product}
             onChange={handleChange}
-            sx={{ flexGrow: 2, maxWidth: '65%' }}
+            sx={{ flexGrow: 2, maxWidth: '65%',
+              "& .MuiOutlinedInput-root": {
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#5B4F47",
+                  borderWidth: 1.5,
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#A98B73",
+                  borderWidth: 1.5,
+                },
+              },
+             }}
           />
         </Box>
         <Box
@@ -108,7 +129,18 @@ export default function AddProduct({
             label=''
             value={newProduct.price}
             onChange={handleChange}
-            sx={{ flexGrow: 2, maxWidth: '65%' }}
+            sx={{ flexGrow: 2, maxWidth: '65%',
+              "& .MuiOutlinedInput-root": {
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#5B4F47",
+                  borderWidth: 1.5,
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#A98B73",
+                  borderWidth: 1.5,
+                },
+              },
+             }}
           />
         </Box>
         <Box
@@ -125,26 +157,19 @@ export default function AddProduct({
             minRows={4}
             value={newProduct.status}
             onChange={handleChange}
-            sx={{ flexGrow: 2, maxWidth: '65%' }}
+            sx={{ flexGrow: 2, maxWidth: '65%',
+              "& .MuiOutlinedInput-root": {
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#5B4F47",
+                  borderWidth: 1.5,
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#A98B73",
+                  borderWidth: 1.5,
+                },
+              },
+             }}
           />
-        </Box>
-        <Box display='flex' alignItems='center' sx={{ mb: 2 }}>
-          <Box
-            display='flex'
-            alignItems='center'
-            justifyContent='space-between'
-            sx={{ flexGrow: 1 }}
-          >
-            <Typography variant='subtitle1'> Edit 編輯 </Typography>
-            <TextField
-              {...TextFieldProps}
-              name='edit'
-              label=''
-              value={newProduct.edit}
-              onChange={handleChange}
-              sx={{ maxWidth: '65%' }}
-            />
-          </Box>
         </Box>
       </DialogContent>
       <DialogActions sx={{ my: 0.5 }}>
@@ -161,7 +186,7 @@ export default function AddProduct({
             },
           }}
         >
-          Add
+          Add 新增
         </Button>
       </DialogActions>
     </Dialog>

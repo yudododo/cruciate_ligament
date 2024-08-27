@@ -3,7 +3,7 @@ import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Container, Box } from '@mui/material';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Learn } from './pages/Learn';
 import { About } from './pages/learn/About';
@@ -22,7 +22,7 @@ import { Signup } from './pages/Signup';
 import { CartContext, cartReducer, cartInit } from './store';
 import { NotFound } from './pages/NotFound';
 import { DashBoard } from './pages/admin/DashBoard';
-import { ProductList } from './pages/admin/ProductList';
+import { AdminProducts } from './pages/admin/AdminProducts';
 import { CouponList } from './pages/admin/CouponList';
 import { OrderList } from './pages/admin/OrderList';
 import axios from 'axios';
@@ -48,13 +48,27 @@ function App() {
     
   }, [])
   const reducer = useReducer (cartReducer, cartInit);
+  const location = useLocation();
+  const isDashboardPath = location.pathname.startsWith('/admin');
 
  return(
   <ThemeProvider theme={theme}>
   <CartContext.Provider value={reducer}>
   <Container disableGutters maxWidth="xl" >
-    <NavBar/>
-    <Box mb='120px'style={{top: '80px', bottom: '200px', position: 'relative', display: 'flex', flexDirection: 'column' }} >
+    {!isDashboardPath && <NavBar />}
+    <Box 
+      // mb='120px'
+      // style={{top: '80px', bottom: '200px', position: 'relative', display: 'flex', flexDirection: 'column' }}
+       sx={{
+        flex: 1,
+        mb: '120px', 
+        top: '80px',
+        bottom: isDashboardPath ? '0' : '200px',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/learn" element={<Learn />} >
@@ -78,14 +92,15 @@ function App() {
       </Route>
       <Route path="*" element={<NotFound/>} />
       <Route path="/admin" element={<DashBoard />}>
-      <Route path="productList" element={<ProductList />}></Route>
+      <Route path="products" element={<AdminProducts />}></Route>
         <Route path="couponList" element={<CouponList />}></Route>
         <Route path="orderList" element={<OrderList />}></Route>
       </Route>
     </Routes>
     </Box>
      <Box>
-      <Footer />
+     {!isDashboardPath && <Footer />}
+
     </Box>
   </Container>
   </CartContext.Provider>

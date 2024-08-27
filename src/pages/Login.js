@@ -30,31 +30,26 @@ export const Login = () => {
     console.log(data)
   }
 
+  const navigate = useNavigate(); // 初始化 useNavigate
+  const [loginState, setLoginState] = useState({});
   const submit = async(e) => {
-    const res = await axios.post('/v2/admin/signin', data)
-    const { token, expired } = res.data
-    console.log(res.data)
-    document.cookie = `cruToken=${token}; expires=${new Date(expired)}` ;
-    //儲存 token 
+    try {
+      const res = await axios.post('/v2/admin/signin', data)
+      const { token, expired } = res.data
+      console.log(res.data)
+      document.cookie = `cruToken=${token}; expires=${new Date(expired)}` ;
+      //儲存 token 
+      if (res.data.success){
+        navigate('/admin/products'); 
+      }
+    } catch (error) {
+      console.log('Login error:', error);
+      setLoginState(error.response.data);
+    }
   }
-  useEffect (()=>{
-    //取出 token
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("cruToken="))
-      ?.split("=")[1];
-      console.log(token)
-    axios.defaults.headers.common['Authorization'] = token;
 
-    (async()=>{
-      const productRes = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/products/all`)
-      console.log(productRes)
-    })()
-  },[])
-  
-
+  //忘記下面這是啥了
   const observerRef = useRef(null);
-
   useEffect(() => {
     const targetNode = document.getElementById('login-form'); // 选择你想观察的目标节点
     if (targetNode) {
@@ -80,16 +75,11 @@ export const Login = () => {
       };
     }
   }, []);
-  // const { signMessage, googleLogin, emailLogin } = useSignin();
 
+  // const { signMessage, googleLogin, emailLogin } = useSignin();
 
 // const token = useSelector(state => state.user.token);
 // const userId = useSelector(state => state.user.userId);
-
-// const router = useRouter();
-  // 示例使用 useNavigate 钩子
-// const navigate = useNavigate();
-// navigate('/path');
 
   // console.log(userId, token);
   // const theme = useTheme();
@@ -110,16 +100,6 @@ export const Login = () => {
   //   return navigate.push('/account');
   // }
 
-  // 那時候要跳轉頁面的
-  const navigate = useNavigate(); // 初始化 useNavigate
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // 模拟登录操作，然后导航到 /account
-    console.log('click');
-    navigate('/account/orders'); // 使用 navigate 进行导航
-  }
-
 
   return (
     <Container component="main" sx={{mt: 2, mb:3, width:"390px"}}>
@@ -139,9 +119,9 @@ export const Login = () => {
           <LoginIcon sx={{color:'white', width:30, height:30}} />
         </Avatar>
         <Typography component="h1" variant="h6" sx={{my:3}}> Login </Typography>
+        <Typography component="h6" variant="subtitle2" sx={{  display: loginState.message ? 'block' : 'none', mb:1.5, color: '#FFF', background:'rgb(243,122,122,0.8)', borderRadius: '5px', p:1, width:"269px"}}> Error: {loginState.message} </Typography>
         <Box component="form" noValidate sx={{ width: "269px"}} 
-          // onSubmit={submit}
-        // onSubmit={handleSubmit}
+          onSubmit={submit}
         >
           <TextField
             variant='outlined'
@@ -179,6 +159,7 @@ export const Login = () => {
               }
             }}
             onChange={handleChange}
+            // value='ae24856@gmail.com' 不知道為啥不行先寫入
           />
           <TextField
             variant='outlined'
@@ -230,8 +211,7 @@ export const Login = () => {
                 background: '#4B413A',
                 },
               }}
-            // onClick={handleSubmit}
-            onClick={submit}
+            // onClick={submit}
           >
             Log in 登入
           </Button>

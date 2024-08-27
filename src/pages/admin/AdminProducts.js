@@ -1,8 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import { Avatar, IconButton, Box, Typography, Button } from '@mui/material';
 import AddProduct from '../../components/AddProduct';
-export const ProductList = () => {
+export const AdminProducts = () => {
+  useEffect (()=>{
+    (async()=>{
+      const productRes = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/products/all`)
+      console.log(productRes)
+    })()
+  },[])
+
   const [rows, setRows] = useState([
     {
       id: 1,

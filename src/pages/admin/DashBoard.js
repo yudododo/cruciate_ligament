@@ -1,4 +1,5 @@
-// import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   Container,
   List,
@@ -8,17 +9,87 @@ import {
   ListItemText,
   Grid,
   Box,
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
 } from '@mui/material';
+import logo_pic_only from '../../images/logo_pic_only.png';
 import LocalMallRoundedIcon from '@mui/icons-material/LocalMallRounded';
 import DiscountRoundedIcon from '@mui/icons-material/DiscountRounded';
 import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 
 import { Outlet } from 'react-router-dom';
 export const DashBoard = () => {
+  const logout = () => {
+    // document.cookie = 'cruToken=;'
+    document.cookie = 'cruToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+    navigate('/login');
+  }
   const location = useLocation();
+  const navigate = useNavigate();
+
+   //取出 token
+   const token = document.cookie
+   .split("; ")
+   .find((row) => row.startsWith("cruToken="))
+   ?.split("=")[1];
+   console.log(token)
+  axios.defaults.headers.common['Authorization'] = token;
+  useEffect(() =>{
+    if (!token) {
+      navigate('/login')
+    }
+  }, [navigate, token])
+
   return (
     <Container maxWidth='xl'>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar
+          position='fixed'
+          sx={{
+            background:
+              'linear-gradient(to bottom right, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.4) 100%)',
+          }}
+        >
+          <Toolbar>
+            <img src={logo_pic_only} alt='logo' width={35} height={35} />
+            <Typography
+              variant='h6'
+              noWrap
+              component='a'
+              sx={{
+                mx: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontWeight: 600,
+                letterSpacing: '.2rem',
+                color: '#B6846B',
+                textDecoration: 'none',
+                flexGrow: 1, // This makes the Typography element take up available space
+              }}
+            >
+              拾字韌袋
+            </Typography>
+            <Button
+              sx={{
+                my: 1.6,
+                p: 0.8,
+                bgcolor: '#5B4F47',
+                color: '#FFF',
+                display: 'block',
+                borderRadius: '50px',
+                '&:hover': {
+                  background: '#9A7F69',
+                },
+              }}
+              onClick={logout}
+            >
+              登出 Log out
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </Box>
       <Grid container sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
         <Grid
           item
@@ -71,7 +142,7 @@ export const DashBoard = () => {
                 {
                   text: 'Product list',
                   sec: '產品列表',
-                  to: '/admin/productList',
+                  to: '/admin/products',
                   icon: <LocalMallRoundedIcon />,
                 },
                 {
