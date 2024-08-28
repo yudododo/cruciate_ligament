@@ -23,25 +23,37 @@ import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 export const DashBoard = () => {
   const logout = () => {
-    // document.cookie = 'cruToken=;'
-    document.cookie = 'cruToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+    document.cookie = 'cruToken=;'
     navigate('/login');
-  }
+  };
   const location = useLocation();
   const navigate = useNavigate();
 
-   //取出 token
-   const token = document.cookie
-   .split("; ")
-   .find((row) => row.startsWith("cruToken="))
-   ?.split("=")[1];
-   console.log(token)
+  //取出 token
+  const token = document.cookie
+    .split('; ')
+    .find((row) => row.startsWith('cruToken='))
+    ?.split('=')[1];
+  console.log(token);
   axios.defaults.headers.common['Authorization'] = token;
-  useEffect(() =>{
+
+  //用戶沒有 token 的情況下，會跳轉到登入頁
+  useEffect(() => {
+    //加上立即函式，當你有 token 的情況下，會驗證 token 是否有效
     if (!token) {
-      navigate('/login')
-    }
-  }, [navigate, token])
+      return navigate('/login');  // 加上 return 後面程式碼不會在運行了
+    }(async () => {
+      try {
+        await axios.post('/v2/api/user/check');
+      } catch (error) {
+        console.log('user check error:', error);
+        //加入判斷如果 token 是錯誤的，會跳轉到登入頁
+        if(error.response.data.success === false){
+          navigate('/login');
+        }
+      }
+    })();
+  }, [navigate, token]);
 
   return (
     <Container maxWidth='xl'>
@@ -188,7 +200,8 @@ export const DashBoard = () => {
             pb: { xs: 5, md: 10 },
           }}
         >
-          <Outlet />
+          {/* 加上判斷可以防止刷新時出現錯誤 */}
+          {token && <Outlet /> } 
         </Grid>
       </Grid>
     </Container>

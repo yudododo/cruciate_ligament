@@ -30,20 +30,23 @@ export const Login = () => {
     console.log(data)
   }
 
-  const navigate = useNavigate(); // 初始化 useNavigate
+  const navigate = useNavigate(); 
   const [loginState, setLoginState] = useState({});
   const submit = async(e) => {
+    e.preventDefault(); // 防止默认表单提交行为
     try {
       const res = await axios.post('/v2/admin/signin', data)
       const { token, expired } = res.data
       console.log(res.data)
+       //儲存 token 
       document.cookie = `cruToken=${token}; expires=${new Date(expired)}` ;
-      //儲存 token 
+      //如果回傳登入成功，導航至產品頁
       if (res.data.success){
         navigate('/admin/products'); 
       }
     } catch (error) {
       console.log('Login error:', error);
+      //錯誤提示訊息
       setLoginState(error.response.data);
     }
   }
@@ -94,7 +97,7 @@ export const Login = () => {
   // };
 
   // if (token && userId) {
-  //   console.log(userId, token); // 在这里打印 userId 和 token 的值
+  //   console.log(userId, token); 
   //   Cookies.set('userId', userId);
   //   Cookies.set('token', token);
   //   return navigate.push('/account');

@@ -62,7 +62,7 @@ export const NavBar = () => {
             <Typography
               variant="h6"
               noWrap
-              component="a"
+              // component="a" 沒註解掉會重複嵌套
               sx={{
                 mx: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -173,7 +173,7 @@ export const NavBar = () => {
               <Typography
                 variant="h6"
                 noWrap
-                component="a"
+                // component="a"
                 sx={{
                   mx: 2,
                   display: { xs: 'flex', md: 'none' },
@@ -246,7 +246,7 @@ export const NavBar = () => {
               sx={{ display: { xs: 'none', md: 'block' } }}
             >
               {shopOptions.map((option) => (
-                <MenuItem key={option} onClick={handleCloseShopMenu}>
+                <MenuItem key={option.path} onClick={handleCloseShopMenu}>
                   <Link component={RouterLink} underline="none"to={`/shop/${option.path}`} color="#5B4F47">
                   {option.label}
                   </Link>

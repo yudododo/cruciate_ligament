@@ -42,7 +42,7 @@ export const Footer = () => {
           <Typography variant="caption"><Link component={RouterLink} underline="none" color="#5B4F47" to="/learn/faqs">FAQs 常見問題</Link></Typography> <br/>
         </Grid>
         <Grid item xs={2.5}>
-        <Typography variant="subtitle2"><Link underline="none" color="#5B4F47">Follow Us</Link ></Typography>
+        <Typography variant="subtitle2" color="#5B4F47">Follow Us</Typography>
         <Link underline="none" color="#5B4F47" target="_blank" href="https://www.instagram.com/cruciate_ligament/">
         <InstagramIcon sx={{color: "#5B4F47", width: 30, height: 30}}/></Link>
         </Grid>
