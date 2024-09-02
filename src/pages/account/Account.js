@@ -75,7 +75,6 @@ export const Account = () => {
           >
             <List
               disablePadding
-              disableGutters
               dense
               sx={{
                 display: 'flex',
@@ -105,7 +104,6 @@ export const Account = () => {
                 <ListItem
                   key={item.text}
                   disablePadding
-                  disableGutters
                   selected={location.pathname === item.to}
                 >
                   <ListItemButton component={RouterLink} to={item.to}>

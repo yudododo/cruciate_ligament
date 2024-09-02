@@ -143,7 +143,6 @@ export const DashBoard = () => {
           >
             <List
               disablePadding
-              disableGutters
               dense
               sx={{
                 display: 'flex',

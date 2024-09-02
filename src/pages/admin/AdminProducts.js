@@ -4,66 +4,34 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Avatar, IconButton, Box, Typography, Button } from '@mui/material';
 import AddProduct from '../../components/AddProduct';
 export const AdminProducts = () => {
+  //用六角的 API 取德資料
+  const [products, setProducts] = useState([]);
+  const [pagination, setPagination] = useState({});
   useEffect (()=>{
-    (async()=>{
-      const productRes = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/products/all`)
-      console.log(productRes)
-    })()
+    getProducts();
   },[])
 
-  const [rows, setRows] = useState([
-    {
-      id: 1,
-      classification: ' Key Chain 鑰匙圈',
-      product: '愛心鑰匙圈',
-      price: '120',
-      status: 'on',
-    },
-    {
-      id: 2,
-      classification: 'Phone Strap 手機掛繩',
-      product: '花花長掛繩',
-      price: '490',
-      status: 'off',
-    },
-    {
-      id: 3,
-      classification: 'Cup Bag 飲料袋',
-      product: '花花飲料提袋',
-      price: '250',
-      status: 'on',
-    },
-    {
-      id: 4,
-      classification: 'Phone Strap 手機掛繩',
-      product: '素面長掛繩',
-      price: '280',
-      status: 'off',
-    },
-  ]);
+  const getProducts = async() =>{
+    (async()=>{
+      const productRes = await axios.get(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/products`)
+      console.log(productRes)
+      setProducts(productRes.data.products);
+      setPagination(productRes.data.pagination)
+      const formattedRows = productRes.data.products.map(item => ({
+        id: item.id,
+        category: item.category,
+        product: item.content,           
+        price: item.origin_price,
+        status: item.is_enable
+      }));
+      setRows(formattedRows);
+    })()
+  }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNewProduct((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-  const handleAddProduct = () => {
-    const newRow = {
-      id: rows.length + 1,
-      classification: newProduct.classification,
-      product: newProduct.product,
-      price: newProduct.price,
-      status: newProduct.address,
-    };
-    setRows([...rows, newRow]);
-    setNewProduct({ contract: '', network: '', tag: '', address: '', abi: '' });
-    handleCloseAdd();
-  };
+  const [rows, setRows] = useState([]);
 
   const [newProduct, setNewProduct] = useState({
-    classification: '',
+    category: '',
     product: '',
     price: '',
     status: '',
@@ -101,17 +69,15 @@ export const AdminProducts = () => {
       <AddProduct
         openAdd={openAdd}
         handleCloseAdd={handleCloseAdd}
-        handleChange={handleChange}
-        onSave={handleAddProduct}
-        newProduct={newProduct}
+        getProducts={getProducts}
       />
       <DataGrid
         rows={rows}
         columns={[
           { field: 'id', headerName: 'ID', editable: true, width: 60 },
           {
-            field: 'classification',
-            headerName: 'Classification 分類',
+            field: 'category',
+            headerName: 'Category 種類',
             editable: true,
             width: 170,
           },
@@ -132,11 +98,6 @@ export const AdminProducts = () => {
             headerName: 'Status 啟用狀態',
             width: 100,
             align: 'center',
-            // renderCell: (params) => (
-            //   <IconButton onClick={() => handleFavoriteClick(params.row.id)}>
-            //       {params.row.favorite ? <FavoriteRoundedIcon color="error" /> : <FavoriteBorderIcon />}
-            //   </IconButton>
-            // ),
           },
           {
             field: 'edit',
