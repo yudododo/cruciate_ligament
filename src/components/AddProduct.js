@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   Box,
@@ -16,8 +16,10 @@ import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 
 export default function AddProduct({
   openAdd,
-  handleCloseAdd,
-  getProducts
+  closeProductModal,
+  getProducts,
+  type,
+  tempProduct,
 }) {
   const TextFieldProps = {
     required: true,
@@ -35,20 +37,46 @@ export default function AddProduct({
     },
   };
   const [tempData, setTempData] = useState({
-    title: 'title',
+    title: '',
     category: '',
     origin_price: 100,
     price: 300,
     unit: '條',
     description: '123',
-    content: '',
+    content: 'content',
     is_enabled: 1,
     imageUrl: '123',
   });
+
+  useEffect(()=>{
+    if (type ==='create'){
+      //初始化
+      setTempData({
+        title: '',
+        category: '',
+        origin_price: 100,
+        price: 300,
+        unit: '條',
+        description: '123',
+        content: 'content',
+        is_enabled: 1,
+        imageUrl: '123',
+      })
+    }else if( type ==='edit' ){
+      // setTempData(tempProduct) //用外部傳進來的
+      setTempData({
+        ...tempProduct,
+        unit: tempProduct.unit || '條',  // 确保 unit 有默认值
+        price: tempProduct.price || 300, // 确保 price 有默认值 超怪不知道為啥要加上這兩項
+      });
+    }
+    console.log(type,tempProduct)
+  },[type, tempProduct])
+
   const handleChange = (e) =>{
     console.log(e)
     const {value, name} = e.target;
-    if (['price'].includes(name)) {
+    if (['price','origin_price'].includes(name)) {
       setTempData({
         ...tempData, 
         [name]: Number(value), //再轉換成數字型別
@@ -67,14 +95,22 @@ export default function AddProduct({
   }
   //製作儲存按鈕
   const submit = async () => {
+    console.log(tempData);
     try {
-      const res = await axios.post(
-        `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`, {
+      let api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product`;
+      let method = 'post';
+      if (type === 'edit') {
+        api = `/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${tempProduct.id}`;
+        method = 'put';
+      }
+      const res = await axios[method](
+        api, 
+        {
           data: tempData
         }
       );
       console.log(res);
-      handleCloseAdd();
+      closeProductModal();
       getProducts();
     } catch (error) {
       console.log(error);
@@ -83,10 +119,10 @@ export default function AddProduct({
   return (
     <Dialog
       open={openAdd}
-      // onClose={handleCloseAdd}
+      // onClose={closeProductModal}
       onClose={(e, reason) => {
         if (reason !== 'backdropClick') {
-          handleCloseAdd(e);
+          closeProductModal(e);
         }
       }}
       maxWidth='sm'
@@ -98,10 +134,10 @@ export default function AddProduct({
         },
       }}
     >
-      <DialogTitle>Add Product 新增產品</DialogTitle>
+      <DialogTitle>{type === 'create' ? 'Add Product 新增產品' : `Edit 編輯${tempData.title}`}</DialogTitle>
       <IconButton
         aria-label='close'
-        onClick={handleCloseAdd}
+        onClick={closeProductModal}
         sx={{
           position: 'absolute',
           right: 15,
@@ -153,9 +189,9 @@ export default function AddProduct({
           <Typography variant='subtitle1'> Product Name 產品名稱 </Typography>
           <TextField
             {...TextFieldProps}
-            name='content'
+            name='title'
             label=''
-            value={tempData.content}
+            value={tempData.title}
             onChange={handleChange}
             sx={{ flexGrow: 2, maxWidth: '65%',
               "& .MuiOutlinedInput-root": {
@@ -180,10 +216,10 @@ export default function AddProduct({
           <Typography variant='subtitle1'> Selling Price 售價 </Typography>
           <TextField
             {...TextFieldProps}
-            name='price'
+            name='origin_price'
             type='number'
             label=''
-            value={tempData.price}
+            value={tempData.origin_price}
             onChange={handleChange}
             sx={{ flexGrow: 2, maxWidth: '65%',
               "& .MuiOutlinedInput-root": {
@@ -205,13 +241,12 @@ export default function AddProduct({
           sx={{ mb: 2 }}
         >
           <Typography variant='subtitle1'> Status 啟用狀態 </Typography>
-          <Checkbox name="is_enabled" defaultChecked sx={{ ml: 9 }} onChange={handleChange} value={tempData.is_enabled} />
+          <Checkbox name="is_enabled" checked={!!tempData.is_enabled} sx={{ ml: 9 }} onChange={handleChange} value={tempData.is_enabled} />
         </Box>
       </DialogContent>
       <DialogActions sx={{ my: 0.5 }}>
         <Button
           fullWidth
-          // onClick={onSave}
           onClick={submit}
           sx={{
             background: '#5B4F47',
@@ -223,7 +258,7 @@ export default function AddProduct({
             },
           }}
         >
-          Add 新增
+          {type === 'create' ? 'Add 新增' : 'Save 儲存'}
         </Button>
       </DialogActions>
     </Dialog>
