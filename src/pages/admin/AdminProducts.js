@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import { Avatar, IconButton, Box, Typography, Button } from '@mui/material';
-import AddProduct from '../../components/AddProduct';
+import ProductModal from '../../components/ProductModal';
+import DelModal from '../../components/DelModal';
 export const AdminProducts = () => {
   //用六角的 API 取得資料
   const [products, setProducts] = useState([]);
@@ -50,6 +51,27 @@ export const AdminProducts = () => {
   const closeProductModal = () => {
       setOpenAdd(false);
   }
+  const [openDel, setOpenDel] = useState(false);
+  const openDelModal = (product) => {
+    setTempProduct(product);
+    setOpenDel(true);
+  }
+  const closeDelModal = () => {
+    setOpenDel(false);
+  }
+
+  const delProduct = async (id) =>{
+    try {
+      const res = await axios.delete(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/product/${id}`)
+      console.log(res)
+      if(res.data.success){
+        getProducts();
+        closeDelModal();
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <Box sx={{ width: '100%', height: '400px' }}>
@@ -77,43 +99,51 @@ export const AdminProducts = () => {
           Add Product 新增產品
         </Button>
       </Box>
-      <AddProduct
+      <ProductModal
         openAdd={openAdd}
         closeProductModal={closeProductModal}
         getProducts={getProducts}
         tempProduct={tempProduct}
         type={type}
       />
+      <DelModal
+        openDel={openDel}
+        closeDelModal={closeDelModal}
+        text={tempProduct.title}
+        handleDel={delProduct}
+        id={tempProduct.id}
+      />
       <DataGrid
+        autoHeight
         rows={rows}
         columns={[
           { field: 'id', headerName: 'ID', editable: true, width: 60 },
           {
             field: 'category',
             headerName: 'Category 種類',
-            editable: true,
+            // editable: true,
             width: 150,
           },
           {
             field: 'title',
             headerName: 'Product Name 產品名稱',
-            editable: true,
+            // editable: true,
             width: 150,
           },
           {
             field: 'origin_price',
             headerName: 'Selling Price 售價',
-            editable: true,
+            // editable: true,
             width: 100,
           },
           {
             field: 'is_enabled',
             headerName: 'Status 啟用狀態',
             width: 100,
-            editable: true,
+            // editable: true,
             align: 'center',
             renderCell: (params) => {
-              console.log('is_enabled value:', params.value);
+              // console.log('is_enabled value:', params.value);
               return <span>{params.value === 1 ? 'on' : 'off'}</span>;
             },
           },
@@ -150,6 +180,7 @@ export const AdminProducts = () => {
                       background: 'rgb(243,122,122)',
                     },
                   }}
+                  onClick={() =>{openDelModal(params.row)}}
                 >
                   Delete 刪除
                 </Button>

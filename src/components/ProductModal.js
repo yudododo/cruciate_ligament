@@ -10,11 +10,13 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
-  Checkbox
+  Checkbox,
+  MenuItem,
+  Select,
 } from '@mui/material';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 
-export default function AddProduct({
+export default function ProductModal({
   openAdd,
   closeProductModal,
   getProducts,
@@ -154,31 +156,40 @@ export default function AddProduct({
         <Box
           display='flex'
           alignItems='center'
-          justifyContent='space-between'
+          // justifyContent='space-between'
           sx={{ mb: 2 }}
         >
           <Typography variant='subtitle1' sx={{ flexGrow: 1 }}>
             {' '}
             Category 種類{' '}
           </Typography>
-          <TextField
-            {...TextFieldProps}
-            name='category'
-            label=''
+          <Select
+            name="category"
+            id="category"
+            labelId='category'
             value={tempData.category}
+              // label="Category"
+            required
             onChange={handleChange}
-            sx={{ flexGrow: 2, maxWidth: '65%',
-              "& .MuiOutlinedInput-root": {
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#5B4F47",
-                  borderWidth: 1.5,
-                },
-                "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#A98B73",
-                  borderWidth: 1.5,
-                },
-              }, }}
-          />
+            sx={{
+              height: 35, width: '65%',
+              fontSize: 13,
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#5B4F47",
+                borderWidth: 1.5,
+              },
+              "&:hover .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#A98B73",
+              },
+              "& > svg": {
+	              fill: "#5B4F47"//改變箭頭顏色
+              }
+            }}
+          >
+            <MenuItem value="Phone Strap">Phone Strap 手機掛繩</MenuItem>
+            <MenuItem value="Key Chain">Key Chain 鑰匙圈</MenuItem>
+            <MenuItem value="Drink Holder">Drink Holder 飲料袋</MenuItem>
+          </Select>
         </Box>
         <Box
           display='flex'
