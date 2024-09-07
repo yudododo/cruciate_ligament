@@ -42,7 +42,7 @@ export default function DelDialog({
       </IconButton>
       <DialogContent>
         <DialogContentText>{`Are you sure you want to delete ${text}?`}<br />
-        {`您確定要刪除這個產品嗎？${text}`}</DialogContentText>
+        {`您確定要刪除${text}嗎？`}</DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button

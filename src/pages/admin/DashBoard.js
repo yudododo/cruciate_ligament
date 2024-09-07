@@ -159,7 +159,7 @@ export const DashBoard = () => {
                 {
                   text: 'Coupon List',
                   sec: '優惠卷列表',
-                  to: '/admin/couponList',
+                  to: '/admin/coupons',
                   icon: <DiscountRoundedIcon />,
                 },
                 {

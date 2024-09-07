@@ -23,7 +23,7 @@ import { CartContext, cartReducer, cartInit } from './store';
 import { NotFound } from './pages/NotFound';
 import { DashBoard } from './pages/admin/DashBoard';
 import { AdminProducts } from './pages/admin/AdminProducts';
-import { CouponList } from './pages/admin/CouponList';
+import { AdminCoupons } from './pages/admin/AdminCoupons';
 import { OrderList } from './pages/admin/OrderList';
 import axios from 'axios';
 
@@ -93,7 +93,7 @@ function App() {
       <Route path="*" element={<NotFound/>} />
       <Route path="/admin" element={<DashBoard />}>
       <Route path="products" element={<AdminProducts />}></Route>
-        <Route path="couponList" element={<CouponList />}></Route>
+        <Route path="coupons" element={<AdminCoupons />}></Route>
         <Route path="orderList" element={<OrderList />}></Route>
       </Route>
     </Routes>
