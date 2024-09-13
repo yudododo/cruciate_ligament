@@ -1,33 +1,21 @@
 {
   "files": {
     "main.css": "/cruciate_ligament/static/css/main.a48e9355.css",
-    "main.js": "/cruciate_ligament/static/js/main.f5c06903.js",
+    "main.js": "/cruciate_ligament/static/js/main.1bdc5403.js",
     "static/js/453.b4932a4c.chunk.js": "/cruciate_ligament/static/js/453.b4932a4c.chunk.js",
     "static/media/cruciate_ligament_03.jpg": "/cruciate_ligament/static/media/cruciate_ligament_03.68b797d9aba6425b9b58.jpg",
-    "static/media/phonestrap08.jpg": "/cruciate_ligament/static/media/phonestrap08.9b1f4588b1818286fee4.jpg",
-    "static/media/phonestrap06.jpg": "/cruciate_ligament/static/media/phonestrap06.f88f16dcd7ab9015f333.jpg",
-    "static/media/keychain02.jpg": "/cruciate_ligament/static/media/keychain02.83810e6a1faecdd89133.jpg",
-    "static/media/phonestrap01.jpg": "/cruciate_ligament/static/media/phonestrap01.d5ae3236fddc25bab715.jpg",
-    "static/media/drinkholder01.jpg": "/cruciate_ligament/static/media/drinkholder01.475a06b53039ff952bf9.jpg",
-    "static/media/keychain01.jpg": "/cruciate_ligament/static/media/keychain01.fb3b9dc9b8bef13dcc37.jpg",
-    "static/media/phonestrap04.jpg": "/cruciate_ligament/static/media/phonestrap04.438f633607995493f460.jpg",
     "static/media/logo_pic_only.png": "/cruciate_ligament/static/media/logo_pic_only.cefbbe695954fd83b3d4.png",
     "static/media/avatar_dog.jpg": "/cruciate_ligament/static/media/avatar_dog.77def11ea44600e4034a.jpg",
-    "static/media/phonestrap07.jpg": "/cruciate_ligament/static/media/phonestrap07.8fe12e0260c018e87dc2.jpg",
-    "static/media/phonestrap03.jpg": "/cruciate_ligament/static/media/phonestrap03.89312ff55e4be4b062a8.jpg",
     "static/media/logo_w.png": "/cruciate_ligament/static/media/logo_w.2e08cd51ddea094e5d51.png",
     "static/media/cruciate_ligament_01.jpg": "/cruciate_ligament/static/media/cruciate_ligament_01.b3f86f4c23ecd13ae9c4.jpg",
-    "static/media/phonestrap05.jpg": "/cruciate_ligament/static/media/phonestrap05.b9a6062eb03ca5c45c9a.jpg",
-    "static/media/phonestrap02.jpg": "/cruciate_ligament/static/media/phonestrap02.3cfe98cecdb1b49d3c35.jpg",
-    "static/media/keychain03.jpg": "/cruciate_ligament/static/media/keychain03.d739b40e96f6fe602158.jpg",
     "static/media/line.png": "/cruciate_ligament/static/media/line.b57ab1148d6223d27e66.png",
     "index.html": "/cruciate_ligament/index.html",
     "main.a48e9355.css.map": "/cruciate_ligament/static/css/main.a48e9355.css.map",
-    "main.f5c06903.js.map": "/cruciate_ligament/static/js/main.f5c06903.js.map",
+    "main.1bdc5403.js.map": "/cruciate_ligament/static/js/main.1bdc5403.js.map",
     "453.b4932a4c.chunk.js.map": "/cruciate_ligament/static/js/453.b4932a4c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a48e9355.css",
-    "static/js/main.f5c06903.js"
+    "static/js/main.1bdc5403.js"
   ]
 }
