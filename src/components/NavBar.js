@@ -6,7 +6,7 @@ import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, B
 import MenuIcon from '@mui/icons-material/MenuRounded';
 import logo_pic_only from '../images/logo_pic_only.png';
 
-const settings = ['Orders 訂購紀錄', 'Profile 帳戶資料', 'Setting 設定', 'Logout 登出'];
+const settings = ['Orders 訂購紀錄', 'Profile 帳戶資料', 'Setting 設定', 'Login 登入'];
 const shopOptions = [
   { label: 'All Products | 全部商品', path: 'all' },
   { label: 'Phone Strap | 手機掛繩', path: 'phonestrap' },

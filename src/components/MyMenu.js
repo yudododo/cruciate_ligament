@@ -3,13 +3,14 @@ import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import { Link as RouterLink} from  'react-router-dom';
 
 const icons = {
   'Orders 訂購紀錄': BorderColorRoundedIcon,
   'Profile 帳戶資料': PersonRoundedIcon,
   'Setting 設定': SettingsRoundedIcon,
-  'Logout 登出': LogoutRoundedIcon,
+  'Login 登入': LoginRoundedIcon,
 };
 export const MyMenu = ({ anchorEl, open, onClose, settings }) => {
   return (
