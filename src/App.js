@@ -25,6 +25,8 @@ import { DashBoard } from './pages/admin/DashBoard';
 import { AdminProducts } from './pages/admin/AdminProducts';
 import { AdminCoupons } from './pages/admin/AdminCoupons';
 import { OrderList } from './pages/admin/OrderList';
+import { Products } from './pages/Products';
+import { ProductDetail } from './pages/ProductDetail';
 import axios from 'axios';
 
 import './index.css'; 
@@ -75,11 +77,12 @@ function App() {
         <Route path="about" element={<About />} ></Route>      
         <Route path="faqs" element={<FAQs />}></Route>      
       </Route>
-      <Route path="/shop" element={<Shop />} >
-        <Route path="all" element={<All />} />
+      <Route path="/products" element={<Products />} >
+        {/* <Route path="all" element={<All />} />
         <Route path="phonestrap" element={<Phonestrap />}></Route>
         <Route path="keychain" element={<Keychain />}></Route>
-        <Route path="drinkholder" element={<Drinkholder />}></Route>
+        <Route path="drinkholder" element={<Drinkholder />}></Route> */}
+        {/* <Route path='product/:id' element={<ProductDetail />}></Route> */}
       </Route>
       <Route path="/login" element={<Login />} />
       {/* <Route path="/login" element={!user ? <Login /> : <Navigate to="/account" />} /> */}

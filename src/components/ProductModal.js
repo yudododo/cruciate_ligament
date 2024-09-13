@@ -47,7 +47,7 @@ export default function ProductModal({
     description: '123',
     content: 'content',
     is_enabled: 1,
-    imageUrl: '123',
+    imageUrl: '',
   });
 
   useEffect(()=>{
@@ -62,7 +62,7 @@ export default function ProductModal({
         description: '123',
         content: 'content',
         is_enabled: 1,
-        imageUrl: '123',
+        imageUrl: '',
       })
     }else if( type ==='edit' ){
       // setTempData(tempProduct) //用外部傳進來的
@@ -118,6 +118,35 @@ export default function ProductModal({
       console.log(error);
     }
   }
+  const [imageUrl, setImageUrl] = useState('');
+  const uploadFile = async(file) => {
+    console.log(file);
+    if (!file) {
+    return
+    }
+    // JS 中的建構函式，用來建立一個用於提交表單資料的對象
+  const formData = new FormData();
+  formData.append('file-to-upload', file);
+  const token = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('cruToken='))
+    ?.split('=')[1];
+  try {
+    const res = await axios.post(`/v2/api/${process.env.REACT_APP_API_PATH}/admin/upload`, formData, {
+      headers: {
+        authorization: token,
+      }
+    }
+    )
+    const { imageUrl } = res.data;
+      setImageUrl(imageUrl);
+      setTempData(prevData => ({ ...prevData, imageUrl }));
+    console.log('success', res.data)
+  } catch (error) {
+    console.log('Upload error:', error);
+  }
+  }
+
   return (
     <Dialog
       open={openAdd}
@@ -246,6 +275,34 @@ export default function ProductModal({
              }}
           />
         </Box>
+        <Box
+          display='flex'
+          alignItems='center'
+          justifyContent='space-between'
+          sx={{ mb: 2 }}
+        >
+          <Typography variant='subtitle1'> 上傳圖片 </Typography>
+          <TextField
+            {...TextFieldProps}
+            name='file_to_upload'
+            type='file'
+            label=''
+            onChange={(e)=> uploadFile(e.target.files[0])}
+            sx={{ flexGrow: 2, maxWidth: '65%',
+              "& .MuiOutlinedInput-root": {
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#5B4F47",
+                  borderWidth: 1.5,
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#A98B73",
+                  borderWidth: 1.5,
+                },
+              },
+             }}
+          />
+        </Box>
+        <img src={imageUrl} alt='' style={{ width: 150, height: 150, marginLeft: 190, borderRadius: '5px' }} />
         <Box
           display='flex'
           alignItems='center'

@@ -158,7 +158,8 @@ export const NavBar = () => {
               >
                 {shopOptions.map((option) => (
                   <MenuItem key={option.path} onClick={handleCloseShopMenu}>
-                    <Link component={RouterLink} underline="none" to={`/shop/${option.path}`} color="#5B4F47">
+                    {/* <Link component={RouterLink} underline="none" to={`/shop/${option.path}`} color="#5B4F47"> */}
+                    <Link component={RouterLink} underline="none" to="/products" color="#5B4F47">
                       {option.label}
                     </Link>
                   </MenuItem>
@@ -247,7 +248,8 @@ export const NavBar = () => {
             >
               {shopOptions.map((option) => (
                 <MenuItem key={option.path} onClick={handleCloseShopMenu}>
-                  <Link component={RouterLink} underline="none"to={`/shop/${option.path}`} color="#5B4F47">
+                  {/* <Link component={RouterLink} underline="none"to={`/shop/${option.path}`} color="#5B4F47"> */}
+                  <Link component={RouterLink} underline="none" to='/products' color="#5B4F47">
                   {option.label}
                   </Link>
                 </MenuItem>

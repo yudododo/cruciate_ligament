@@ -29,7 +29,7 @@ export const Cart = () => {
         return(
           <ListItem key={item.id}>
           <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-            <img src={item.img} alt={item.title} style={{ width: 55, height: 55, marginRight: 16, borderRadius: '5px' }} />
+            <img src={item.imageUrl} alt={item.title} style={{ width: 55, height: 55, marginRight: 16, borderRadius: '5px' }} />
             <ListItemText primary={item.title} secondary={`NT$${item.price} x ${item.quantity}`} />
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <TextField

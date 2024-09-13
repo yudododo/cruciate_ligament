@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
   Container,
@@ -14,14 +15,16 @@ import {
   Typography,
   Button,
 } from '@mui/material';
+import { Message } from '../../components/Message';
+import { MessageContext, messageReducer, initMessage } from '../../store/MessageStore';
 import logo_pic_only from '../../images/logo_pic_only.png';
 import LocalMallRoundedIcon from '@mui/icons-material/LocalMallRounded';
 import DiscountRoundedIcon from '@mui/icons-material/DiscountRounded';
 import BorderColorRoundedIcon from '@mui/icons-material/BorderColorRounded';
-import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 
 import { Outlet } from 'react-router-dom';
 export const DashBoard = () => {
+  const reducer = useReducer(messageReducer, initMessage);
   const logout = () => {
     document.cookie = 'cruToken=;'
     navigate('/login');
@@ -56,7 +59,9 @@ export const DashBoard = () => {
   }, [navigate, token]);
 
   return (
+    <MessageContext.Provider value={reducer}>
     <Container maxWidth='xl'>
+      <Message />
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
           position='fixed'
@@ -204,5 +209,6 @@ export const DashBoard = () => {
         </Grid>
       </Grid>
     </Container>
+    </MessageContext.Provider>
   );
 };

@@ -126,7 +126,7 @@ export const AdminCoupons = () => {
           },
           {
             field: 'due_date',
-            headerName: 'Expired Date 到期日期',
+            headerName: 'Expiration date 到期日期',
             // editable: true,
             width: 100,
           },
