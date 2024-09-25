@@ -7,7 +7,7 @@ export const Keychain = () => {
       <Typography variant='h6' component='h1' gutterBottom>
         Key Chain 鑰匙圈
       </Typography>
-      <Products type='keychain' />
+      <Products category='keychain' />
     </div>
   );
 };

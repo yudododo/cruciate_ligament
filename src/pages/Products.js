@@ -13,17 +13,13 @@ import {
 } from '@mui/material';
 // import productsData from '../assets/productsData.js';
 import { CartContext } from '../store.js';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, Outlet } from 'react-router-dom';
 
-export const Products = ({ type }) => {
+export const Products = ({ category }) => {
   const [state, dispatch] = useContext(CartContext);
 
-  // const filteredProducts = productsData.filter(product => product.type === type); //全部不會出現
-  // const filteredProducts = type ? productsData.filter(product => product.type === type) : productsData;
-
-
   const [ products, setProducts ] = useState([]);
-    
+  
   const getProducts = async () => {
     const productRes = await axios.get(
       `/v2/api/${process.env.REACT_APP_API_PATH}/products`,
@@ -34,24 +30,33 @@ export const Products = ({ type }) => {
 
   useEffect(() =>{
     getProducts()
-  },[])
+  },[category])
 
+  // const filteredProducts = category 
+  // ? products.filter(product => product.category === category) 
+  // : products;
+
+  const filteredProducts = category
+  ? products.filter((product) => product.category.toLowerCase() === category.toLowerCase())
+  : products;
+
+  
   return (
     <Grid container spacing={2} p={2}>
-      {/* {filteredProducts.map((product) => ( */}
-      {products.map((product) => (
+      {filteredProducts.map((product) => (
+      // {products.map((product) => (
         <Grid item key={product.id} xs={6} md={3}>
           <Card sx={{ maxWidth: 280 }}>
             <CardActionArea>
               <CardMedia
                 component='img'
-                height='auto'
                 image={product.imageUrl}
                 alt={product.title}
+                style={{ aspectRatio: '1 / 1', objectFit: 'cover' }}
               />
               <CardContent>
                 {/* <Link component={RouterLink} to='/cart'> */}
-                <Link component={RouterLink} to={`/product/${product.id}`}>
+                <Link component={RouterLink} to={`/products/${product.id}`}>
                 <Typography gutterBottom variant='subtitle1' component='div'>
                   {product.title}
                 </Typography></Link>
@@ -82,6 +87,7 @@ export const Products = ({ type }) => {
           </Card>
         </Grid>
       ))}
+      <Outlet />
     </Grid>
   );
 };

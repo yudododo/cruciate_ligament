@@ -215,9 +215,9 @@ export default function ProductModal({
               }
             }}
           >
-            <MenuItem value="Phone Strap">Phone Strap 手機掛繩</MenuItem>
-            <MenuItem value="Key Chain">Key Chain 鑰匙圈</MenuItem>
-            <MenuItem value="Drink Holder">Drink Holder 飲料袋</MenuItem>
+            <MenuItem value="phonestrap">Phone Strap 手機掛繩</MenuItem>
+            <MenuItem value="keychain">Key Chain 鑰匙圈</MenuItem>
+            <MenuItem value="drinkholder">Drink Holder 飲料袋</MenuItem>
           </Select>
         </Box>
         <Box

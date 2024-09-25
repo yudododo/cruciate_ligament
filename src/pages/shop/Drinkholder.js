@@ -7,7 +7,7 @@ export const Drinkholder = () => {
       <Typography variant='h6' component='h1' gutterBottom>
         Drink Holder 飲料提袋
       </Typography>
-      <Products type='drinkholder' />
+      <Products category='drinkholder' />
     </div>
   );
 };

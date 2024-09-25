@@ -7,7 +7,7 @@ export const Phonestrap = () => {
       <Typography variant='h6' component='h1' gutterBottom>
         Phone Straps 手機掛繩
       </Typography>
-      <Products type='phonestrap' />
+      <Products category='phonestrap' />
     </div>
   );
 };
