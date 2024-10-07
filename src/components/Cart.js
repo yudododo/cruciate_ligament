@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { CartContext } from '../store';
+import { CartContext } from '../store/store';
 import {Box, Drawer,Button, List, ListItem, ListItemText, Divider, IconButton, Typography, TextField, Badge, Link} from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
@@ -30,7 +30,7 @@ export const Cart = () => {
           <ListItem key={item.id}>
           <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
             <img src={item.imageUrl} alt={item.title} style={{ width: 55, height: 55, marginRight: 16, borderRadius: '5px' }} />
-            <ListItemText primary={item.title} secondary={`NT$${item.price} x ${item.quantity}`} />
+            <ListItemText primary={item.title} secondary={`NT$${item.origin_price} x ${item.quantity}`} />
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <TextField
                 // value="1"

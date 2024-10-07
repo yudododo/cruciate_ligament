@@ -1,4 +1,7 @@
 import React, { useReducer, useEffect, useState } from 'react';
+import axios from 'axios';
+import './index.css'; 
+
 import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -19,17 +22,13 @@ import { Setting } from './pages/account/Setting';
 import { Orders } from './pages/account/Orders';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
-import { CartContext, cartReducer, cartInit } from './store';
+import { CartContext, cartReducer, cartInit } from '../src/store/store';
 import { NotFound } from './pages/NotFound';
 import { DashBoard } from './pages/admin/DashBoard';
 import { AdminProducts } from './pages/admin/AdminProducts';
 import { AdminCoupons } from './pages/admin/AdminCoupons';
 import { OrderList } from './pages/admin/OrderList';
-import { Products } from './pages/Products';
 import { ProductDetail } from './pages/ProductDetail';
-import axios from 'axios';
-
-import './index.css'; 
 
 const theme = createTheme({
   typography: {
@@ -49,13 +48,13 @@ function App() {
     })();
     
   }, [])
-  const reducer = useReducer (cartReducer, cartInit);
+  const cartreducer = useReducer (cartReducer, cartInit);
   const location = useLocation();
   const isDashboardPath = location.pathname.startsWith('/admin');
 
  return(
   <ThemeProvider theme={theme}>
-  <CartContext.Provider value={reducer}>
+  <CartContext.Provider value={cartreducer}>
   <Container disableGutters maxWidth="xl" >
     {!isDashboardPath && <NavBar />}
     <Box 
@@ -79,10 +78,12 @@ function App() {
       </Route>
       <Route path="/shop" element={<Shop />} >
         <Route path="all" element={<All />} />
-        <Route path="phonestrap" element={<Phonestrap />}></Route>
-        <Route path="keychain" element={<Keychain />}></Route>
-        <Route path="drinkholder" element={<Drinkholder />}></Route>
-        {/* <Route path='product/:id' element={<ProductDetail />}></Route> */}
+        <Route path="phonestrap" element={<Phonestrap />} />
+        <Route path="phonestrap/:id" element={<ProductDetail />} />
+        <Route path="keychain" element={<Keychain />} />
+        <Route path="keychain/:id" element={<ProductDetail />} />
+        <Route path="drinkholder" element={<Drinkholder />} />
+        <Route path="drinkholder/:id" element={<ProductDetail />} />
       </Route>
       <Route path="/login" element={<Login />} />
       {/* <Route path="/login" element={!user ? <Login /> : <Navigate to="/account" />} /> */}
@@ -95,7 +96,7 @@ function App() {
       </Route>
       <Route path="*" element={<NotFound/>} />
       <Route path="/admin" element={<DashBoard />}>
-      <Route path="products" element={<AdminProducts />}></Route>
+        <Route path="products" element={<AdminProducts />}></Route>
         <Route path="coupons" element={<AdminCoupons />}></Route>
         <Route path="orderList" element={<OrderList />}></Route>
       </Route>
@@ -103,7 +104,6 @@ function App() {
     </Box>
      <Box>
      {!isDashboardPath && <Footer />}
-
     </Box>
   </Container>
   </CartContext.Provider>

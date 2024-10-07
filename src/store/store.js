@@ -1,7 +1,7 @@
 import  { createContext } from 'react';
 
 function calculateTotalPrice(cartList) {
-  return cartList.map((item) => item.quantity * item.price).reduce((a, b) => a + b, 0);
+  return cartList.map((item) => item.quantity * item.origin_price).reduce((a, b) => a + b, 0);
 }
 
 export const cartInit = {
