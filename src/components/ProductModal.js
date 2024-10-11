@@ -42,7 +42,7 @@ export default function ProductModal({
     title: '',
     category: '',
     origin_price: 100,
-    price: 300,
+    price: '',
     unit: '條',
     description: '123',
     content: 'content',
@@ -57,7 +57,7 @@ export default function ProductModal({
         title: '',
         category: '',
         origin_price: 100,
-        price: 300,
+        price: '',
         unit: '條',
         description: '123',
         content: 'content',
@@ -69,7 +69,7 @@ export default function ProductModal({
       setTempData({
         ...tempProduct,
         unit: tempProduct.unit || '條',  // 确保 unit 有默认值
-        price: tempProduct.price || 300, // 确保 price 有默认值 超怪不知道為啥要加上這兩項
+        origin_price: tempProduct.origin_price || 100, // 确保 price 有默认值 超怪不知道為啥要加上這兩項
       });
     }
     console.log(type,tempProduct)
@@ -256,10 +256,12 @@ export default function ProductModal({
           <Typography variant='subtitle1'> Selling Price 售價 </Typography>
           <TextField
             {...TextFieldProps}
-            name='origin_price'
+            // name='origin_price'
+            name='price'
             type='number'
             label=''
-            value={tempData.origin_price}
+            // value={tempData.origin_price}
+            value={tempData.price}
             onChange={handleChange}
             sx={{ flexGrow: 2, maxWidth: '65%',
               "& .MuiOutlinedInput-root": {

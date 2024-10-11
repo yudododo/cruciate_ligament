@@ -1,8 +1,8 @@
 import  { createContext } from 'react';
 
-function calculateTotalPrice(cartList) {
-  return cartList.map((item) => item.quantity * item.origin_price).reduce((a, b) => a + b, 0);
-}
+// function calculateTotalPrice(cartList) {
+//   return cartList.map((item) => item.quantity * item.origin_price).reduce((a, b) => a + b, 0);
+// }
 
 export const cartInit = {
   cartList:[],
@@ -34,7 +34,7 @@ export const cartReducer = (state, action) => {
       return {
         ...state,
         cartList,
-        total:calculateTotalPrice(cartList)
+        // total:calculateTotalPrice(cartList)
       }
 
     case 'CHANGE_CART_QUANTITY':
@@ -42,7 +42,7 @@ export const cartReducer = (state, action) => {
       return{
         ...state,
         cartList,
-        total:calculateTotalPrice(cartList)
+        // total:calculateTotalPrice(cartList)
       }
 
     case 'REMOVE_CART_ITEM':
@@ -50,7 +50,7 @@ export const cartReducer = (state, action) => {
       return{
         ...state,
         cartList,
-        total:calculateTotalPrice(cartList)
+        // total:calculateTotalPrice(cartList)
       }
       
     default:

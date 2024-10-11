@@ -26,7 +26,8 @@ export const AdminProducts = () => {
         id: item.id,
         category: item.category,
         title: item.title,           
-        origin_price: item.origin_price,
+        // origin_price: item.origin_price,
+        price: item.price,
         // is_enabled: item.is_enabled === 1 ? 'on' : 'off',
         is_enabled: item.is_enabled,
       }));
@@ -125,7 +126,8 @@ export const AdminProducts = () => {
             width: 150,
           },
           {
-            field: 'origin_price',
+            // field: 'origin_price',
+            field: 'price',
             headerName: 'Selling Price 售價',
             // editable: true,
             width: 100,

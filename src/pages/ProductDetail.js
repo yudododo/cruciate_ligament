@@ -21,7 +21,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { CartContext } from '../store/store.js';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
-export const ProductDetail = () => {
+export const ProductDetail = ({getCart}) => {
   const [color, setColor] = useState('');
   const [ownColor, setOwnColor] = useState('');
   const [quantity, setQuantity] = useState(1);
@@ -54,6 +54,28 @@ export const ProductDetail = () => {
   };
   const [state, dispatch] = useContext(CartContext);
 
+  const addToCart = async () =>{
+    const data = {
+      "data": {
+        "product_id": product.id,
+        "qty": quantity
+      }
+    }
+    setIsLoading(true)
+    try {
+      const res = await axios.post(`/v2/api/${process.env.REACT_APP_API_PATH}/cart`, data)
+      console.log("post購物車內容",res)
+      setIsLoading(false)
+      setCartData(res.data.data);
+      getCart();
+    } catch (error) {
+      console.log(error)
+    }
+  }
+//避免客人在沒跑完商品ajax，重複按按鈕新增數量
+  const [ isLoading, setIsLoading ] = useState(false);
+
+  const [ cartData, setCartData ] = useState({});
 
   return (
     <Container maxWidth='lg'>
@@ -112,7 +134,8 @@ export const ProductDetail = () => {
                 fontSize: { xs: '1rem', sm: '1.2rem', md: '1.3rem' },
               }}
             >
-              NT${product.origin_price}
+              {/* NT${product.origin_price} */}
+              NT${product.price}
             </Typography>
             <Typography variant='subtitle2' sx={{ color: '#5B4F47', mb: 2 }}>
               客製商品10-20個工作天，可等候再下單
@@ -243,14 +266,15 @@ export const ProductDetail = () => {
                     background: '#4B413A',
                   },
                 }}
-                onClick={() => {
-                  dispatch({
-                    type: 'ADD_TO_CART',
-                    payload: { ...product, quantity },
-                  });
-                }}
+                // onClick={() => {
+                //   dispatch({
+                //     type: 'ADD_TO_CART',
+                //     payload: { ...product, quantity },
+                //   });
+                // }}
+                onClick={()=>addToCart()}
+                disabled={isLoading}
               >
-                {' '}
                 Add to Cart 加入購物車
               </Button>
             </FormGroup>

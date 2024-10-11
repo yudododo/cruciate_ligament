@@ -42,28 +42,29 @@ export const Products = ({ category }) => {
       {filteredProducts.map((product) => (
         <Grid item key={product.id} xs={6} md={3}>
           <Card sx={{ maxWidth: 280 }}>
-            <CardActionArea>
-              <CardMedia
-                component='img'
-                image={product.imageUrl}
-                alt={product.title}
-                style={{ aspectRatio: '1 / 1', objectFit: 'cover' }}
-              />
-              <CardContent>
-                <Link
-                  component={RouterLink}
-                  to={`/shop/${product.category}/${product.id}`}
-                >
-                  <Typography gutterBottom variant='subtitle1' component='div'>
+            <Link
+              component={RouterLink}
+              to={`/shop/${product.category}/${product.id}`}
+              underline='none'
+            >
+              <CardActionArea>
+                <CardMedia
+                  component='img'
+                  image={product.imageUrl}
+                  alt={product.title}
+                  style={{ aspectRatio: '1 / 1', objectFit: 'cover' }}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant='subtitle1' color='#5B4F47'>
                     {product.title}
                   </Typography>
-                </Link>
-                <Typography variant='body2' color='text.secondary'>
-                  NT${product.origin_price}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Typography variant='body2' color='#5B4F47'>
+                    NT${product.price}
+                    {/* NT${product.origin_price} */}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
               <Button
                 size='small'
                 variant='outlined'
@@ -76,20 +77,21 @@ export const Products = ({ category }) => {
                     background: '#4B413A',
                   },
                 }}
-                onClick={() => {
-                  dispatch({
-                    type: 'ADD_TO_CART',
-                    payload: { ...product, quantity: 1 },
-                  });
-                }}
+                // onClick={() => {
+                //   dispatch({
+                //     type: 'ADD_TO_CART',
+                //     payload: { ...product, quantity: 1 },
+                //   });
+                // }}
               >
                 Add to cart 加入購物車
               </Button>
-            </CardActions>
+              </CardActions>
+            </Link>
           </Card>
         </Grid>
       ))}
-      <Outlet />
+      {/* <Outlet /> */}
     </Grid>
   );
 };

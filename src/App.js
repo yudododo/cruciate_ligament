@@ -52,11 +52,27 @@ function App() {
   const location = useLocation();
   const isDashboardPath = location.pathname.startsWith('/admin');
 
+  const [cartData, setCartData] = useState({});
+  const getCart = async () => {
+    try {
+      const res = await axios.get(
+        `/v2/api/${process.env.REACT_APP_API_PATH}/cart`,
+      );
+      console.log('get購物車內容:', res);
+      setCartData(res.data.data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    getCart();
+  }, [])
+
  return(
   <ThemeProvider theme={theme}>
   <CartContext.Provider value={cartreducer}>
   <Container disableGutters maxWidth="xl" >
-    {!isDashboardPath && <NavBar />}
+    {!isDashboardPath && <NavBar cartData={cartData} getCart={getCart} />}
     <Box 
       // mb='120px'
       // style={{top: '80px', bottom: '200px', position: 'relative', display: 'flex', flexDirection: 'column' }}
@@ -79,11 +95,11 @@ function App() {
       <Route path="/shop" element={<Shop />} >
         <Route path="all" element={<All />} />
         <Route path="phonestrap" element={<Phonestrap />} />
-        <Route path="phonestrap/:id" element={<ProductDetail />} />
+        <Route path="phonestrap/:id" element={<ProductDetail getCart={getCart} />} />
         <Route path="keychain" element={<Keychain />} />
-        <Route path="keychain/:id" element={<ProductDetail />} />
+        <Route path="keychain/:id" element={<ProductDetail getCart={getCart} />} />
         <Route path="drinkholder" element={<Drinkholder />} />
-        <Route path="drinkholder/:id" element={<ProductDetail />} />
+        <Route path="drinkholder/:id" element={<ProductDetail getCart={getCart}  />} />
       </Route>
       <Route path="/login" element={<Login />} />
       {/* <Route path="/login" element={!user ? <Login /> : <Navigate to="/account" />} /> */}

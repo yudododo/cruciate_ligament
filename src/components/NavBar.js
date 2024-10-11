@@ -14,7 +14,7 @@ const shopOptions = [
   { label: 'Drink Holder | 飲料袋', path: 'drinkholder' }
 ];
 
-export const NavBar = () => {
+export const NavBar = ({ cartData, getCart }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [anchorElShop, setAnchorElShop] = useState(null);
@@ -270,7 +270,8 @@ export const NavBar = () => {
               settings={settings}
             />
           </Box>
-          <Cart />
+          {/* 把cartData 傳進去cart 裡面 */}
+          <Cart cartData={cartData} getCart={getCart}/>
         </Toolbar>
       </Container>
     </AppBar>
